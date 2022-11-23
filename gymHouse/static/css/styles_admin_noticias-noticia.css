@@ -19,55 +19,53 @@
     font-family: "raleway black";/*900*/
     src: url("fonts/raleway/static/Raleway-Black.ttf");
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html{
     font-size: 62.5%;
 }
 body {
     margin: 0;
     padding: 0;
-    background: #ffffff; 
     font-size: 1em;
     line-height: 1.5em;
 }
 
-.wrapper_noticias {
-    width: 100vw;
+.wrapper_noticias
+{
+    padding-bottom: 6rem;
 }
 .noticia{
     width: 80%;
     max-width: 110rem;
     height: fit-content;
-    min-height: 52rem;
+    min-height: 50rem;
     background: #fdaeae;
     border-top-left-radius: 160px;
     border-top-right-radius: 160px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-
-    position: relative;
     top: -4rem; bottom: 0;
     right: 0; left: 0;
-    /* margin: 0 auto; */
     margin: auto;
-    margin-bottom: 2rem;
+   
 }
 .crearnoticia{
     width: 80%;
     max-width: 110rem;
     height: fit-content;
-    min-height: 52rem;
+    min-height: 50rem;
     background: #fdaeae;
     border-top-left-radius: 160px;
     border-top-right-radius: 160px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-
-    position: relative;
-    top: -4rem; bottom: 0;
-    right: 0; left: 0;
-    /* margin: 0 auto; */
     margin: auto;
-    margin-bottom: 2rem;
 }
 
 .turnback{
@@ -77,6 +75,11 @@ body {
 }
 .turnback img{
     width: 5rem;
+}
+.space
+{
+    height: 14rem;
+    width: 100%;
 }
 
 .imagen{
@@ -88,11 +91,12 @@ body {
     top: -8rem;
     left: 0; right: 0;
     margin: 0 auto;
-    margin-top: 13%;
+    /* margin-top: 13%; */
     overflow: hidden;
+    display: flex;
 }
 .imagen img{
-    width: 100%;
+    margin: auto;
     height: 100%;
 }
 
@@ -110,6 +114,8 @@ body {
 .texto-titulo h3{
     font-family: "raleway bold";
     font-size: 2.6rem;
+    line-height: 2.6rem;
+    margin-bottom: 2rem;
 }
 .texto-contenido{
     width: 90%;
@@ -137,17 +143,26 @@ body {
     min-height: 2rem;
 }
 
-.icons{
-    height: 100%;
-    width: fit-content;
-    /* padding: 1% 0 0 2%; */
+.iconitos{
     display: flex;
+    margin: auto;
+    justify-content: flex-end;
 }
-
-.icons i{
-    font-size: 3rem;
-    margin: 1rem 0 1rem 2rem;
-    color: #fff;
+.iconitos a,.iconitos button{
+    background: none;
+    border: none;
+    width: 5rem;
+    /* height: 5rem; */
+    margin: 0 0 0.5rem;
+    cursor: pointer;
+}
+.iconitos a img,.iconitos button img{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
 }
 
 .formato-texto{
@@ -180,7 +195,14 @@ body {
 }
 .coments-overflow{
     overflow-y: auto;
-    height: 20rem;
+    height: fit-content;
+}
+.coments-overflow h1{
+    font-family: "raleway medium";
+    font-size: 1.6rem;
+    padding: 2rem 1rem;
+    color: white;
+    text-align: center;
 }
 .coments-overflow::-webkit-{
     width: .6rem;
@@ -260,7 +282,7 @@ body {
         top: 0rem;
     }
 }
-@media (max-width: 700px){
+@media (max-width: 800px){
     .noticia{
         width: 98%;
         height: fit-content;

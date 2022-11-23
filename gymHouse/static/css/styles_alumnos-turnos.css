@@ -49,8 +49,6 @@
 }
 
 html{
-    width: 100%;
-    height: 100%;
     font-size: 62.5%;
 }
 
@@ -58,12 +56,11 @@ body{
     width: 100%;
     height: 100%;
     font-size: 1em;
-    background-color: #eceef3;
     line-height: 1.5em;
 }
 /*--------------------------------------------------------------------------------------------------------------*/
 .turnos{
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     padding: 2rem 1rem 1rem 9rem;
     overflow-y: hidden;
@@ -228,6 +225,7 @@ body{
     background-color: #D6E1FF;
     display:flex;
     justify-content: center;
+    cursor: pointer;
 }
 /* .shifts_info--pupils.element_clicked
 {   
@@ -290,10 +288,11 @@ body{
 }
 .titulo p{
     font-family: "raleway semibold";
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     text-align: center;
     padding: 8px 0 8px;
     margin: 0 0 3.6px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
     /* border: 1px black dashed; */
 }
 .diashorario{
@@ -308,13 +307,14 @@ body{
 .dia{
     font-family: "raleway semibold";
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 14px 0 9px;
 }
 .horario{
     font-family: "raleway semibold";
     text-align: center;
     font-size: 1.6rem;
+    font-feature-settings: 'pnum' on, 'lnum' on;
     margin: 0 0 14px;
 }
 .plan p{
@@ -345,24 +345,26 @@ body{
     align-content: center;
     margin: auto;
 }
-
+.window_turno_alumnos_wrapper
+{
+    transform: translateX(110%);
+    transition: .3s all ease;
+}
 
 .window_turno_alumnos{
-    margin: 2rem auto 0;
+    margin-top: 7rem;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border-radius: 32px;
     min-height: 16rem;
-    transition: all 1s ease;
     justify-self: center;
-    position: absolute;
-    bottom: -110%;
-    transition: .3s all ease;
+    max-height: 30rem;
+    overflow: auto;
 }
-.window_turno_alumnos.active
+.window_turno_alumnos_wrapper.active
 {
-    bottom:50% ;
+    transform: translateX(0%);
 }
 .window_turno_alumnos button{
     font-weight: 800;
@@ -402,9 +404,9 @@ body{
     margin-right: 1rem;
 }
 
-@media (max-width:700px) {
+@media (max-width:800px) {
     .turnos {
-        padding: 1rem;
+        padding: 1.3rem;
         display: block;
     }
     .shifts{
@@ -419,7 +421,27 @@ body{
     .landing-planmensual{
         margin: 2rem 0;
     }
-    .window_turno_alumnos{
-        margin-bottom: 10rem;
+    .window_turno_alumnos_wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(0%);
+        opacity: 0;
+        pointer-events: none;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background: #00000094;
+    }
+    .window_turno_alumnos_wrapper.active{
+        opacity: 1;
+        pointer-events: unset;
+    }
+    .window_turno_alumnos
+    {
+        margin: 0;
+        height: fit-content;
     }
 }

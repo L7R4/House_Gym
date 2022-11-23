@@ -19,13 +19,20 @@
     font-family: "raleway black";/*900*/
     src: url("fonts/raleway/static/Raleway-Black.ttf");
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
 html{
     font-size: 62.5%;
 }
 body {
     margin: 0;
     padding: 0;
-    background: #fafafa; 
     font-size: 1em;
     line-height: 1.5em;
 }
@@ -34,10 +41,10 @@ body {
 
 .landing{
     height:fit-content;
-    width: 92vw;
+    width: auto;
+    max-width: 160rem;
+    padding-left: 8rem;
     margin: auto;
-    margin-right: 0;
-    /* border: 1px black dotted; */
 }
 
 /*----------------------------------------------------*/
@@ -46,29 +53,49 @@ body {
     
 }
 /* query celular */
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     *{
         letter-spacing: 0.6px;
     }
     .landing{
         width: 100w;
         margin: auto;
+        padding: 0;
     }
+    /* .menu */
 }
 /*----------------------------------------------------*/
 
 /* NOTICIAS ---------------------------------------------------------------------------------------*/
 
 .landing-noticias{
-    height:fit-content;
     width: 98%;
-    /* border: 1px rgb(0, 0, 0) dashed; */
+    display: flex;
+    flex-flow: column;
 }
+.landing-noticias > a{
+    border-radius: 14px;
+    background-color: #5135FF;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    transition: all .5s ease;
+    text-decoration: none;
+    font-family: "raleway semibold";
+    font-size: 1.6rem;
+    color: white;
+    padding: 1.5rem 3rem;
+    margin: 0 auto;
+}
+
+.landing-noticias > a:hover{
+    transform: scale(1.08);
+}
+
 .landing-noticias h1{
     width: 100%;
     text-align: center;
     font-size: 2.4rem;
-    margin: 2rem;
+    margin: 0;
+    padding: 2rem 0;
     font-family: "Raleway semibold";
 }
 .landing-noticias-news{
@@ -77,7 +104,7 @@ body {
     margin-bottom: 2%;
     display:flex;
 }
-.noticia-principal{
+/* .noticia-principal{
     height: 28%;
     width: 40%;
     border-radius: 18px;
@@ -107,23 +134,23 @@ body {
     justify-content: center;
     align-content: center;
     margin: 1.2rem auto;
-}
+} */
 .noticia-sec{
-    height: 22%;
+    height: 25rem;
     width: 29%;
     border-radius: 18px;
     position: relative;
     display: inline-block;
     margin: auto;
     overflow: hidden;
+    /* min-width: 30rem; */
 }
 .noticia-sec img{
-    height: 100%;
+    height: 25rem;
     width: 100%;
     margin: auto;
 }
 .titulo-noticiasecundaria{
-    height: 3rem;
     width: 100%;
     position:absolute;
     background:rgba(0, 0, 0, 0.786);
@@ -133,11 +160,11 @@ body {
     color:white;
     font-size: 1.5rem;
     font-family: "raleway medium";
-    display:flex;
-    justify-content: center;
-    margin: 0.75rem auto;
+    padding: 0.8rem;
+    margin:0;
+    text-align: center;
 }
-.landing-noticias-boton{
+/* .landing-noticias-boton{
     width: 24rem;
     height: 5rem;
     border-radius: 18px;
@@ -148,8 +175,8 @@ body {
     justify-content: center;
     margin: 0 auto;
     transition: all .5s ease;
-}
-.landing-noticias button:hover{
+} */
+/* .landing-noticias button:hover{
     transform: scale(1.08);
 }
 .landing-noticias-boton p{
@@ -160,8 +187,8 @@ body {
     display: flex;
     align-content: center;
     margin: auto;
-    /* border: 1px orangered dotted; */
-}
+    
+} */
 
 /*----------------------------------------------------*/
 @media (max-width: 1100px) {
@@ -176,22 +203,39 @@ body {
     .landing-noticias-boton p{
         font-size: 1.5rem;
     }
+    .noticia-sec{
+        height: 20rem;
+    }
+    .noticia-sec img{
+        height: 20rem;
+    }
+}
+@media (max-width: 900px) {
+    .noticia-sec:nth-child(3){
+        display: none;
+    }
+    .noticia-sec{
+        height: 25rem;
+        width: 45%;
+    }
+    .noticia-sec img{
+        height: 25rem;
+    }
 }
 @media (max-width: 700px) {
-    .landing-noticias{
-        margin: 3rem 0 ;
-    }
     .landing h1{
         font-size: 2rem;
         font-family: "raleway medium";
+    }   
+    .noticia-sec:nth-child(2){
+        display: none;
     }
-    .noticia-principal{
+    .noticia-sec{
         height: 28rem;
         width: 44rem;
     }
-    .noticia-sec{
-        height: 0px;
-        width: 0px;
+    .noticia-sec img{
+        height: 28rem;
     }
     .landing-noticias-boton{
         width: 25rem;
@@ -201,6 +245,23 @@ body {
     .landing-noticias-boton p{
         font-family: "raleway semibold";
         font-size: 1.6rem;
+    }
+}
+@media (max-width: 550px) {
+    .noticia-sec{
+        height: 20rem;
+        width: 35rem;
+    }
+    .noticia-sec img{
+        height: 20rem;
+    }
+    .landing-noticias-boton{
+        width: 21rem;
+        height: 5rem;
+    }
+    .landing-noticias-boton p{
+        font-family: "raleway semibold";
+        font-size: 1.2rem;
     }
 }
 /*----------------------------------------------------*/
@@ -216,7 +277,7 @@ body {
 }
 /*----------------------------------------------------*/
 @media (max-width: 1024px) {}
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .landing-ordenar{
         width: 100%;
         display:block;
@@ -229,7 +290,7 @@ body {
 .landing-ejercicios{
     height: fit-content;
     width: 70%;
-    margin: 3% 0 0 0;
+    margin-top: 3rem;
     /* border: 1px rgb(0, 0, 0) dashed; */
 }
 .landing-ejercicios a{
@@ -254,53 +315,39 @@ body {
     align-content: center;
     margin: auto 20px;
     color:black;
-    /* border: 1px rgb(105, 105, 105) dashed; */
 }
-.ejercicios-sup{
+.ejercicios{
     display: flex;
     justify-content: space-between;
     margin: 10px auto;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
-.ejercicios-inf{
+.ejercicios a{
+    height: 15rem;
+    width: 32%;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 0.5rem;
     display: flex;
-    justify-content: space-between;
-    margin: 10px auto;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
-.ejercicios-sup a{
-    height: 25%;
-    width: 19%;
-    background: #cdcdcd;
-    border-radius: 10px;
-    /* border: 1px black dashed; */
-}
-.ejercicios-inf a{
-    height: 25%;
-    width: 19%;
-    background: #cdcdcd;
-    border-radius: 10px;
-    /* border: 1px black dashed; */
-}
-.ejercicios-sup a img{
-    width: 80%;
-    display:flex;
-    align-content: center;
-    margin: auto;
-    padding-top: 24px;
-}
-.ejercicios-inf a img{
-    width: 80%;
-    display:flex;
-    align-content: center;
-    margin: auto;
-    padding-top: 24px;
-}
-.ejercicios-sup a p{
+.ejercicios a h1{
     font-family: "raleway bold";
-    font-size: 1.6rem;
+    font-size: 2rem;
     text-align: center;
     color:black;
 }
-.ejercicios-inf a p{
+.ejercicios a img{
+    width: 6rem;
+    display:flex;
+    align-content: center;
+    margin: 1.7rem 0;
+}
+.ejercicios a p{
     font-family: "raleway bold";
     font-size: 1.6rem;
     text-align: center;
@@ -308,50 +355,42 @@ body {
 }
 
 /*----------------------------------------------------*/
-@media (max-width: 1100px) {
-    .ejercicios-titulo{
-        height: 40px;
+@media (max-width: 1200px) {
+    .ejercicios a{
+        width: 31%;
     }
-    .ejercicios-titulo p{
-        font-size: 1.8rem;
+}
+@media (max-width: 800px) {
+    .landing-ejercicios{
+        width: 100%;
+        margin: 3% 0 0 0;
     }
-    .ejercicios-sup a p{
-        font-size: 1.4rem;
+    .ejercicios a{
+        width: 30%;
     }
-    .ejercicios-inf a p{
+    .ejercicios a h1{
+        font-size: 1.9rem;
+    }
+    .ejercicios a p{
         font-size: 1.4rem;
     }
 }
-@media (max-width: 700px) {
-    .landing-ejercicios{
-        width: 100%;
+@media (max-width: 550px) {
+    .ejercicios a{
+        height: 12rem;
+        width: 31%;
+        min-width: 8rem;
+        margin: 0.5rem 0.2rem;
     }
-    .landing-ejercicios a{
-        text-decoration: none;
+    .ejercicios a h1{
+        font-size: 1.2rem;
     }
-    .ejercicios-titulo{
-        height: 45px;
+    .ejercicios a img{
+        width: 5rem;
     }
-    .ejercicios-titulo p{
-        font-size: 2rem;
-        font-family: "raleway bold" ;
-    }
-    .vuelan{
-        display: none;
-    }
-    .ejercicios-sup a{
-        height: 30%;
-        width: 32%;
-    }
-    .ejercicios-inf a{
-        height: 30%;
-        width: 32%;
-    }
-    .ejercicios-sup a p{
-        font-size: 1.8rem;
-    }
-    .ejercicios-inf a p{
-        font-size: 1.8rem;
+    .ejercicios a p{
+        font-family: "raleway semibold";
+        font-size: 1rem;
     }
 }
 /*----------------------------------------------------*/
@@ -361,13 +400,13 @@ body {
     height: fit-content;
     width:30%;
     display:block;
-    margin: 3% auto;
+    margin: 3rem 1rem;
     /* border: 1px black dotted; */
 }
 
 /*----------------------------------------------------*/
 @media (max-width: 1024px) {}
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .plan-playlist{
         height: fit-content;
         width:100%;
@@ -377,8 +416,8 @@ body {
     }
 }
 /*----------------------------------------------------*/
-
-/* PLAN MENSUAL --------------------------------------*/
+/* 
+PLAN MENSUAL -------------------------------------
 .landing-planmensual{
     height: auto;
     width: 90%;
@@ -386,21 +425,21 @@ body {
     padding: 4px 0 20px;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.35);
     border-radius: 24px;
-    /* border: 1px rgb(0, 255, 47) dashed; */
+    border: 1px rgb(0, 255, 47) dashed;
 }
 .planmensual-titulo img{
     width: 80px;
     display:flex;
     justify-content: center;
     margin: 10px auto 1%;
-    /* border: 1px black dashed; */
+    border: 1px black dashed;
 }
 .planmensual-titulo p{
     font-family: "raleway semibold";
     font-size: 2rem;
     text-align: center;
     margin: 2px auto 10px;
-    /* border: 1px black dashed; */
+    border: 1px black dashed;
 }
 .planmensual-tuplan{
     height: auto;
@@ -412,7 +451,7 @@ body {
     margin: 10px 0 1px;
     background:#b8b4ff;
     border-radius: 10px 10px 0 0;
-    /* border: 1px rgb(255, 0, 0) dashed; */
+    border: 1px rgb(255, 0, 0) dashed;
 }
 .titulo p{
     font-family: "raleway semibold";
@@ -420,7 +459,7 @@ body {
     text-align: center;
     padding: 8px 0 8px;
     margin: 0 0 3.6px;
-    /* border: 1px black dashed; */
+    border: 1px black dashed;
 }
 .diashorario{
     display:flex;
@@ -429,7 +468,7 @@ body {
 .diashorario div{
     width: 32.4%;
     background:#b8b4ff;
-    /* border: 1px black dashed; */
+    border: 1px black dashed;
 }
 .dia{
     font-family: "raleway semibold";
@@ -474,15 +513,16 @@ body {
     align-content: center;
     margin: auto;
 }
-
-/*----------------------------------------------------*/
-@media (max-width: 1024px) {
+ */
+ 
+/*-----------------------------------*/
+/* @media (max-width: 1024px) {
     .landing-planmensual{
         height: auto;
         width: 90%;
         margin: 0 auto;
         padding: 4px 0 12px;
-        /* border: 1px dotted black; */
+        border: 1px dotted black;
     }
     .planmensual-titulo img{
         width: 70px;
@@ -515,8 +555,8 @@ body {
         font-family: "raleway semibold";
         font-size: 1.4rem;
     }
-}
-@media (max-width: 700px) {
+} */
+/* @media (max-width: 800px) {
     .landing-planmensual{
         margin: 6% auto;
     }
@@ -547,19 +587,19 @@ body {
         font-size: 1.6rem;
         margin: 0 0 14px;
     }
-}
-/*----------------------------------------------------*/
+} */
+/*----------------------------*/
 
 
 /* ENCUESTA ----------------------------------------- */
 .landing-encuesta{
     height: auto;
-    width: 90%;
-    margin: 2rem auto 11rem;
+    margin: 0 auto;
     background: #9A8AFF;
     border-radius: 24px;
     padding: 14px 0 12px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    margin-top: 2rem;
 }
 .landing-encuesta p{
     height: fit-content;
@@ -567,7 +607,7 @@ body {
     font-size: 2rem;
     color: white;
     text-align: center;
-    margin: 1rem;
+    margin: 1rem 1rem 1.5rem;
 }
 .landing-encuesta input{
     width: 80%;
@@ -578,9 +618,10 @@ body {
     display:flex;
     justify-content: center;
     margin:auto;
-    font-family: "raleway semibold";
+    font-family: "raleway medium";
     font-size: 1.6rem;
-    padding: 0.8rem;
+    padding: 0.8rem 1rem;
+    
 }
 .landing-encuesta button{
     border-radius: 14px;
@@ -589,14 +630,18 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: all .5s ease;
-    font-family: "raleway bold";
-    font-size: 1.3rem;
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
     color: white;
     display: flex;
     align-content: center;
     justify-content: center;
     margin: 1rem auto 0;
     padding: 1rem 2rem;
+}
+
+.landing-encuesta > button:hover{
+    transform: scale(1.08);
 }
 
 /*----------------------------------------------------*/
@@ -612,3 +657,4 @@ body {
 /*----------------------------------------------------*/
 
 /* FIN LANDING ---------------------------------------*/
+}

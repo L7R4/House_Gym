@@ -7,6 +7,9 @@ class PlaylistForm(forms.ModelForm):
         fields =[
             "link_playlist",
         ]
+
+
+
 class PersonForm(forms.ModelForm):
     class Meta:
         model = Persona
@@ -37,6 +40,12 @@ class PersonForm(forms.ModelForm):
         self.fields['edad'].required = False
         self.fields['biografia'].required = False
         self.fields['foto_de_perfil'].required = False
+    
+    # def clean(self):
+    #     foto = self.cleaned_data['foto_de_perfil']
+    #     if foto == "":
+    #         foto = self.
+    #     return 
 
 class DayForm(forms.ModelForm):
     class Meta:

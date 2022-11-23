@@ -19,13 +19,20 @@
     font-family: "raleway black";/*900*/
     src: url("fonts/raleway/static/Raleway-Black.ttf");
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html{
     font-size: 62.5%;
 }
 body {
     margin: 0;
     padding: 0;
-    background: #fafafa; 
+    /* background: #fafafad6;    */
     font-size: 1em;
     line-height: 1.5em;
 }
@@ -35,16 +42,15 @@ body {
 .screen{
     height: 101vh;
     width: 92vw;
-    margin: 2% 8px auto auto;
+    max-width: 160rem;
+    padding: 1rem 0 0 7rem;
     display:flex;
-    margin-right: 0;
-    /* border: 1px rgb(0, 0, 0) solid; */
+    margin: auto;
 }
 .screen-secciones{
     width: 93%;
     height: fit-content;
     margin: 0rem 2rem;
-    /* border: dotted 1px black; */
 }
 .seccion{
     width: 100%;
@@ -111,6 +117,8 @@ div.plegable.desplegado{
     /* border: 1px solid black; */
     
 }
+
+
 div.plegable.desplegado > .ejercicio{
     display: flex;
     justify-content: space-between;
@@ -211,10 +219,10 @@ div.plegable.desplegado > .ejercicio{
 .ejercicio__buttonQuitar{
     display: none;
     position: absolute;
-    width: fit-content;
+    width: 20px;
     right: -.7rem;
     top: -.8rem;
-    z-index: 5;
+    /* z-index: 5; */
     border-radius: 30%;
     border-color: transparent;
     background-color: rgb(239, 35, 35);
@@ -252,6 +260,8 @@ div.plegable.desplegado > .ejercicio{
 .entrenar-botones h3{
     font-family: "raleway bold";
     font-size: 1.6rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 .botones{
     display: flex;
@@ -269,18 +279,18 @@ div.plegable.desplegado > .ejercicio{
     display:flex;
     justify-content: center;
     margin: auto 0;
-    padding: 1rem 3rem;
     cursor: pointer;
     transition: all .5s ease;
-    font-family: "raleway semibold";
-    font-size: 1.5rem;
 }
 .botones button:hover{
     transform: scale(1.08);
 }
 .botones button a{
     color: white;
+    font-family: "raleway semibold";
+    font-size: 1.5rem;
     text-decoration: none;
+    padding: 1rem 3rem;
 }
 .botones input{
     color: white;
@@ -300,9 +310,59 @@ div.plegable.desplegado > .ejercicio{
     font-family: "raleway semibold";
     font-size: 1.5rem;
 }
+
+/* Estilo de los ejercicios de sección entrenar --------- */
+.ejercicio{
+    width: 30%;
+    min-width: 8rem;
+    max-width: 12rem;
+    margin: 2rem 1rem 1rem 0;
+    background: #101010;
+    border-radius:6px;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+}
+
+.ejercicio > label{
+    cursor: pointer;
+
+}
+
+.imgejercicio{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    background-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    margin: -2rem auto 1rem;
+}
+.imgejercicio img{
+    width: 5rem;
+    padding: 4px;
+    display:flex;
+    align-content: center;
+}
+.ejercicio p{
+    font-family: "raleway semibold";
+    font-size: 1.2rem;
+    text-align: center;
+    color:white;
+    margin: 0 auto 0.5rem;
+}
+
+
 /*--------------------------------*/
-@media (max-width: 1100px) {}
-@media (max-width: 700px) {
+@media (max-width: 400px) {
+    .botones input {
+        font-size: 1.3rem;
+    }
+    .botones button a{
+        font-size: 1.3rem;
+        padding: 0.9rem 2rem;
+    }
+}
+@media (max-width: 800px) {
     *{
         letter-spacing: 0.6px;
     }
@@ -314,6 +374,7 @@ div.plegable.desplegado > .ejercicio{
         width: 100%;
         height: fit-content;
         display: block;
+        padding: 0;
     }
     .seccion > div > h2{
         font-family: "raleway semibold";
@@ -321,11 +382,11 @@ div.plegable.desplegado > .ejercicio{
     }
     .screen-secciones{
         width: 90%;
-        margin: 0 1rem;
+        margin: 0 auto;
     }
     .screen-ejercicio{
         width: 93%;
-        margin: 1rem auto 8rem;
+        margin: 2rem auto;
     }
     .ejercicio-video{
         margin:2rem;

@@ -6,33 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles_menu-celu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles_alumnos-turnos.css' %}">
-    <script src="{% static 'js/sectionProfile.js' %}"></script>
-    
-    <title>Gym House: turnos</title>
+
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
+    <title>Gym House</title>
 </head>
 <body>
 
-    <nav class="menu">
+    {% comment %} FONDO  {% endcomment %}
+    <style>
+        html{
+            background-image: url("{% static 'images/fondogym-ai.svg' %}");
+            background-size: 25rem;
+            background-repeat: repeat;
+        }
+    </style> 
+
+     {% comment %} MENU {% endcomment %}
+     <nav class="menu">
         <div class="menu_icons">
-            <ul>
+            <ul> <!-- poner los links correctos -->
                 <li>
                     <a href="{% url 'login_user' %}">
-                        <img class="logo" src="{% static 'images/logo.png' %}">
+                        <img class="logo" src="{% static 'images/logo.svg' %}">
                     </a> 
+                    
                 </li> 
                 <li>
-                    <a href="#" class="show-profile" id="show-profile"> 
-                        <img src="{% static 'images/user.png' %}"> 
+                    <div class="show-profile" id="show-profile"> 
+                        <img src="/static/images/user.png"> 
                         <p>Perfil</p> 
-                    </a>
+                    </div>
                 </li> 
                 <li> 
                     <a href="{% url 'entrenamiento:ejercicios' %}">
-                        <img src="{% static 'images/gym/gym' %}.png">
-                        <p>Entrenar</p> 
+                        <img src="{% static 'images/gym/gym.png' %}">
+                        <p>Entrenar</p>
                     </a> 
                 </li>
                 <li>
@@ -50,8 +63,130 @@
             </ul>
         </div>
     </nav>
+    
+    {% comment %} MENU RESPONSIVE {% endcomment %}
+    <div class="navigation" id="navigation">
+        <ul>
+            <li class="list" id="inicio">
+                <a href="{% url 'login_user' %}">
+                    <span class="icono"><img class="landing" src="{% static 'images/logo.svg' %}"></span>
+                    <span class="text">Inicio</span>
+                </a>
+                <div class="indicator"></div>
+            </li>
+            <li class="list perfil_nav" id="perfil">
+                <div class="perfil">
+                    <span class="icono"><img src="/static/images/user.png"> </span>
+                    <span class="text">Perfil</span>
+                </div>
+                <div class="indicator"></div>
+            </li>
+            <li class="list" id="entrenar">
+                <a href="{% url 'entrenamiento:ejercicios' %}">
+                    <span class="icono"><img src="{% static 'images/gym/gym.png' %}"></span>
+                    <span class="text">Entrenar</span>
+                </a>
+                <div class="indicator"></div>
+            </li>
+            <li class="list" id="noticias">
+                <a href="{% url 'posts:noticias' %}">
+                    <span class="icono"><img src="{% static 'images/edit.png' %}"></span>
+                    <span class="text">Noticias</span>
+                </a>
+                <div class="indicator"></div>
+            </li>
+            <li class="list" id="turnos">
+                <a href="{% url 'personas:turnos' %}">
+                    <span class="icono"><img src="{% static 'images/calendar.png' %}"></span>
+                    <span class="text">Turnos</span>
+                </a>
+                <div class="indicator"></div>
+            </li>
+            
+        </ul>
+    </div>
 
-    <div class="turnos"> <!--este cambie la class-->
+    {% comment %} PERFIL MODAL {% endcomment %}
+    <section class="section-profile" id="section-profile">
+        <div id="perfil_bg--blur" class="perfil_bg--blur">
+            <div class="perfil_bg--gradient" id="perfil_bg--gradient">
+                <div class="perfil_bg" id="perfil_bg">
+                    <!-- Perfil minimizado........................................ -->
+                    <div class="navbar--fill" id="navbar--fill"></div> 
+                    <div id="profile" class="profile">
+                        {% if user.foto_de_perfil == None %}
+                            <div class="profile_data--radiuspic" id="profile_data--radiuspic">
+                                <img src="{% static 'images/avatar/9.png' %}" class="profile_data--pic" id="profile_data--pic">
+                            </div>
+                        {% else %}
+                            <div class="profile_data--radiuspic" id="profile_data--radiuspic">
+                                <img src="{% if user.foto_de_perfil %} {{user.foto_de_perfil.url}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" class="profile_data--pic" id="profile_data--pic">
+                            </div>
+                        {% endif %}
+                        
+                        <div class="profile_data--name" id="profile_data--name">
+                            <h1>{{user.apodo}}</h1>
+                            {% comment %} <figure></figure> {% endcomment %}
+                            <h3>{{user.nombre}} {{user.apellido}}</h3>
+                            {% if  user.edad != None%}
+                                <p>{{user.edad}} años</p>
+                            {% endif %}
+                            {% comment %} <p>{{user.edad}}</p> {% endcomment %}
+                        </div>
+                        {% if user.biografia %}
+                            <div class="profile_data--description" id="profile_data--description">
+                                <p>{{user.biografia}}</p>
+                            </div>
+                        {% else %}
+                            <br>
+                        {% endif %}
+                        
+                        <div class="profile_data--numbers" id="profile_data--numbers">
+                            <ol>
+                                {% if user.telefono %}
+                                <li>
+                                    <h5>{{user.telefono}}</h5>
+                                    <p>CONTACTO</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+
+                                {% if user.peso %}
+                                <li>
+                                    <h5>{{user.peso}}</h5>
+                                    <p>PESO</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+                                
+                                {% if user.altura %}
+                                <li>
+                                    <h5>{{user.altura}}</h5>
+                                    <p>ALTURA</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+                            </ol>
+                        </div>
+                        <button id="profile_data--button" class="profile_data--button">
+                            <a href="{% url 'personas:perfil' %}">Editar Perfil</a> 
+                        </button>
+                        <a class="botonito" href="{% url 'logout' %}">Salir de la cuenta</a>
+                    </div>
+                    <!-- Fin perfil minimizado........................................ -->
+                </div>
+            </div>
+        </div>
+
+        <div class="aestethical-margin"></div>
+
+    </section>
+
+
+    <div class="turnos"> 
         <div class="shifts" id="shifts"><!--este agregué-->
         <div class="shifts_table" id="shifts_table">
             <h1>TURNOS</h1>
@@ -855,37 +990,40 @@
                         {% if plan == None %}
                             <p>Todavia no tiene un turno registrado</p>
                         {% else %}
-                            <p>{{plan}}</p>
+                            <p>{{plan|upper}}</p>
                         {% endif %} 
                         
                     </div>
                     <div class="diashorario">
                         {% for x in dias %}
                             <div>
-                                <p class="dia">{{x.dia|slice:":3"}}</p>
-                                <p class="horario">{{x.hora}}</p>
+                                <p class="dia">{{x.dia|upper|slice:":3"}}</p>
+                                <p class="horario">{{x.hora}}hs</p>
                             </div>
                         {% endfor %}
                     </div>            
                 </div>
                 <div class="plan"><p>¿Querés cambiar tu plan?</p></div>
-                <a href="https://wa.me/5493624643544">Cambiar plan</a>
+                <a href="https://wa.me/543624594665">Cambiar plan</a>
             </div>
-        
-            <div class="window_turno_alumnos" id="window_turno_alumnos">
-                <button id="window_turno_alumnos_close">X</button>
-                <h1>Alumnos que van al mismo horario que tu!</h1>
-
-                <div class="alumnos_wrapper">
+            <div class="window_turno_alumnos_wrapper" id="window_turno_alumnos_wrapper">
+                <div class="window_turno_alumnos" id="window_turno_alumnos">
+                    <button id="window_turno_alumnos_close">X</button>
+                    <h1>Alumnos que van al mismo horario que tu!</h1>
+    
+                    <div class="alumnos_wrapper">
+                    </div>
+    
                 </div>
-
             </div>
         </div>
         <div class="fill-mediaquery"></div>
     </div>
 
+    <script src="{% static 'js/model.js' %}"></script>
+    <script src="{% static 'js/modalPerfil.js' %}"></script>
+    <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
+    <script src="{% static 'js/modalPerfilResponsive.js' %}"></script>
 </body>
-<script src="{% static 'js/model.js' %}">
-    
-</script>
+
 </html>

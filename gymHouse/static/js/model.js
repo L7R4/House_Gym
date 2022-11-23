@@ -16,12 +16,12 @@ buttons_alumnos.forEach(element => {
         } else {
             window_turno.appendChild(list_clone)
         }
-        window_turno_alumnos.classList.add("active")
+        window_turno_alumnos_wrapper.classList.add("active")
     })
 });
 
 window_turno_alumnos_close.onclick = function() {
-    window_turno_alumnos.classList.remove("active")
+    window_turno_alumnos_wrapper.classList.remove("active")
 }
 
 function desactiveElement() {

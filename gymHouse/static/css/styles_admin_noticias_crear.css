@@ -25,7 +25,6 @@ html{
 body {
     margin: 0;
     padding: 0;
-    background: #ffffff; 
     font-size: 1em;
     line-height: 1.5em;
 }
@@ -35,6 +34,13 @@ body {
 .noticias-crearnoticia{
     height: auto;
 }
+
+/* .space
+{
+    height: 14rem;
+    width: 100%;
+} */
+
 .imagen-subir{
     width: 60%;
     height: 10rem;

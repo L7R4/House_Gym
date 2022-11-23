@@ -1,0 +1,356 @@
+/* FONTS */
+@font-face {
+    font-family: "raleway regular";/*400*/
+    src: url("../fonts/Raleway/static/Raleway-Regular.ttf");
+}
+
+@font-face {
+    font-family: "raleway medium";/*500*/
+    src: url("../fonts/Raleway/static/Raleway-Medium.ttf");
+}
+@font-face {
+    font-family: "raleway semibold";/*600*/
+    src: url("../fonts/Raleway/static/Raleway-SemiBold.ttf");
+}
+@font-face {
+    font-family: "raleway bold";/*700*/
+    src: url("../fonts/Raleway/static/Raleway-Bold.ttf");
+}
+@font-face {
+    font-family: "raleway extrabold";/*800*/
+    src: url("../fonts/Raleway/static/Raleway-ExtraBold.ttf");
+}
+@font-face {
+    font-family: "raleway black";/*900*/
+    src: url("../fonts/Raleway/static/Raleway-Black.ttf");
+}
+
+@font-face {
+    font-family: "nunito black";
+    src: url("../fonts/Nunito/static/Nunito-Black.ttf");
+}
+
+@font-face {
+    font-family: "nunito extrabold";
+    src: url("../fonts/Nunito/static/Nunito-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "nunito bold";
+    src: url("../fonts/Nunito/static/Nunito-Bold.ttf");
+}
+/*FIN FONTS-----------------------------------------------------------------------------------------------------*/
+
+
+/*PROFILE (MINIMIZADO)----------------------------------------------------------------------------------*/
+
+/* Background */
+.perfil_bg--blur{
+    backdrop-filter: blur(15px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+    transition: all .3s ease;
+    pointer-events: none;
+}
+
+.perfil_bg--blur.active
+{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+/*Desplegable*/
+.perfil_bg--gradient{
+    width: 35vw;
+    height: 80vh;
+    min-width: 500px;
+    min-height: 500px;
+    background: linear-gradient(180deg, #5A43FF 0%, #7876FF 18.75%, #8388FF 41.67%, #7B87FF 59.9%, #AEB8FF 82.81%, #E0E8FF 100%);
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.50);
+    border-radius: 0px 50px 50px 0px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: all .5s ease;
+}
+
+.perfil_bg--gradient.active
+{
+    transform: translateX(0%);
+}
+
+
+
+.perfil_bg{
+    transition: all 0.5s;
+    width: 95%;
+    height: 93%;
+    background: #F9F9FF;
+    border-radius: 0px 50px 50px 0px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.30);
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    box-sizing: content-box;
+}   
+
+.navbar--fill{
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+/*------------------------------------------------------------------------------------------------*/
+.perfil_bg > .profile{
+    width: auto;
+    height: 70vh;
+    min-height: 100%;
+}
+
+.profile{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 0 0;
+}
+
+/*Profile Picture*/
+.profile_data--radiuspic{
+    width: 22rem;
+    min-height: 20rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    
+}
+
+.profile_data--radiuspic > .profile_data--pic{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile_data--radiuspic img{
+    border: 3px solid rgba(0, 0, 0, 0.795);
+    border-radius: 50%;
+    padding: 0.8rem;
+}
+
+/*---------------------------------------------------*/
+
+/*Nickname-Name-age*/
+.profile_data--name{
+    width: 100%;
+    height: 16%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    gap: 1.6rem;
+}
+
+.profile_data--name p{
+    font-family: "raleway medium";
+    text-align: center;
+    font-size: max(1.1vw,min(1.9rem));
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+.profile_data--name h1{
+    font-family: "nunito black";
+    text-align: center;
+    font-size: max(2.1vw,min(2.9rem));
+}
+
+.profile_data--name h3{
+    font-family: "nunito bold";
+    text-align: center;
+    font-size: max(1.8vw,min(2.5rem));
+}
+
+/*---------------------------------------------------*/
+
+/*Description*/
+.profile_data--description{
+    height: 13rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    background: rgba(230, 230, 230, 0.5);
+    mix-blend-mode: normal;
+    border-radius: 20px;
+    padding: 2.4%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+}
+
+.profile_data--description p{
+    font-family: "raleway medium";
+    text-align: justify;
+    font-size: max(1vw,min(1.5rem));
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    line-height: 1.3em;
+}
+/*---------------------------------------------------*/
+
+/*Contacto-Altura-Peso*/
+ol{
+    list-style: none;
+}
+
+.profile_data--numbers{
+    width: 90%;
+    height: 10%;
+    margin-bottom: 1rem;
+}
+
+.profile_data--numbers ol{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 2%;
+}
+
+.profile_data--numbers li{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: max(1vw,min(2rem));
+}
+
+.profile_data--numbers li p{
+    font-family: "raleway medium";
+    text-align: center;
+    font-size: max(.9vw,min(1.3rem));
+    color: #414141
+}
+
+.profile_data--numbers li h5{
+    font-family: "raleway medium";
+    text-align: center;
+    font-size: max(1.1vw,min(1.5rem));
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+/*----------------------------------------------------------*/
+/*BUTTON---------------------------------------------------*/
+.profile_data--button{
+    width: 37%;
+    height: 7%;
+    border-radius: 18px;
+    border-color: transparent;
+    background-color: #5135FF;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+.profile_data--button a{
+    text-decoration: none;
+    font-family: "raleway semibold";
+    font-size: max(.9vw,min(1.5rem));
+    color: #D6E1FF;
+    padding: 1.5rem 3rem;
+}
+.botonito{
+    font-family: "raleway semibold";
+    font-size: 1.2rem;
+    color: black;
+    display: flex;
+    align-content: center;
+    margin-bottom: 2rem;
+}
+/*----------------------------------------------------------*/
+
+@media screen and (max-width: 800px) {
+
+    .perfil_bg--blur {
+        top: 0;
+    }
+
+    .perfil_bg--gradient {
+        width: 100vw;
+        height: 100vh;
+        min-width: 0;
+        min-height: 0;
+        border-radius: 0px;
+        justify-content: center;
+        transform: translateX(0%);
+        transform: translateY(100%);
+        
+    }
+    
+    .perfil_bg--gradient.active
+    {
+        transform: translateY(0%);
+    }
+
+
+    .perfil_bg {
+        transition: all 0.5s;
+        width: 95%;
+        height: 80%;
+        border-radius: 50px;
+        display: unset;
+        margin-bottom: 5rem;
+    }
+    .profile
+    {
+        height: 100%;
+    }
+    .profile_data--radiuspic
+    {
+        width: 20rem;
+        min-height: 18rem;
+    }
+    .profile_data--description
+    {
+        display: none;
+    }
+    .profile_data--button{
+        min-width: 165px;
+    }
+    .profile_data--name{
+        gap: 1.2rem;
+    }
+    .profile_data--name h1
+    {
+        font-size: 2.7rem;
+    }
+    .profile_data--name h3
+    {
+        font-size: 2.2rem;
+    }
+
+    .profile_data--name p
+    {
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width: 400px) {
+    .profile_data--radiuspic
+    {
+        width: 18rem;
+        min-height: 16rem;
+    }
+}

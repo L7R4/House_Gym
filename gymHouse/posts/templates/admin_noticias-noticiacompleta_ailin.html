@@ -6,28 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="{% static 'js/sectionNewsComplete.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_menu.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_menu-celu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
     
     <link rel="stylesheet" href="{% static 'css/styles_admin_noticias-noticia.css' %}">
 
-    <title>Gym House: noticias</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
+    <title>Gym House</title>
 </head>
 <body>
+
+    {% comment %} FONDO  {% endcomment %}
+    <style>
+        html{
+            background-image: url("{% static 'images/fondogym-ai.svg' %}");
+            background-size: 25rem;
+            background-repeat: repeat;
+        }
+    </style>
+    
+
+    {% comment %} MENU {% endcomment %}
     <nav class="menu">
         <div class="menu_icons">
             <ul> <!-- poner los links correctos -->
                 <li>
                     <a href="{% url 'login_profe' %}">
-                        <img class="logo" src="{% static 'images/logo.png' %}">
+                        <img class="logo" src="{% static 'images/logo.svg' %}">
                     </a> 
+                    
                 </li> 
                 <li>
-                    <a href="admin_perfil.html">
-                        <img src="{% static 'images/user.png' %}">
-                        <p>Perfil</p>
-                    </a>
+                    <div href="#" class="show-profile" id="show-profile"> 
+                        <img src="/static/images/user.png"> 
+                        <p>Perfil</p> 
+                    </div>
                 </li> 
                 <li> 
                     <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
@@ -36,7 +50,7 @@
                     </a> 
                 </li>
                 <li>
-                    <a href="{% url 'posts:noticias' %}">
+                    <a href="{% url 'posts:adminNoticia' %}">
                         <img src="{% static 'images/edit.png' %}">
                         <p>Noticias</p>
                     </a>
@@ -56,61 +70,144 @@
             </ul>
         </div>
     </nav>
+
+
+    {% comment %} MENU RESPONSIVE {% endcomment %}
     <div class="navigation" id="navigation">
         <ul>
-            <li class="list">
+            <li class="list" id="inicio">
                 <a href="{% url 'login_profe' %}">
-                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="icono"><img class="landing" src="{% static 'images/logo.svg' %}"></span>
                     <span class="text">Inicio</span>
                 </a>
+                <div class="indicator"></div>
             </li>
-            <li class="list active">
+            <li class="list" id="perfil">
                 <a href="admin_perfil.html">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="icono"><img src="/static/images/user.png"> </span>
                     <span class="text">Perfil</span>
                 </a>
+                <div class="indicator"></div>
             </li>
-            <li class="list">
+            <li class="list" id="entrenar">
                 <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
-                    <span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span>
+                    <span class="icono"><img src="{% static 'images/gym/gym.png' %}"></span>
                     <span class="text">Entrenar</span>
                 </a>
+                <div class="indicator"></div>
             </li>
-            <li class="list">
-                <a href="{% url 'posts:noticias' %}">
-                    <span class="icon"><ion-icon name="camera-outline"></ion-icon></span>
+            <li class="list" id="noticias">
+                <a href="{% url 'posts:adminNoticia' %}">
+                    <span class="icono"><img src="{% static 'images/edit.png' %}"></span>
                     <span class="text">Noticias</span>
                 </a>
+                <div class="indicator"></div>
             </li>
-            <li class="list">
+            <li class="list" id="turnos">
                 <a href="{% url 'personas:adminTurnos' %}">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="icono"><img src="{% static 'images/calendar.png' %}"></span>
                     <span class="text">Turnos</span>
                 </a>
+                <div class="indicator"></div>
             </li>
             <li class="list">
                 <a href="{% url 'personas:adminAlumnos' %}">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                    <span class="icono"><img src="{% static 'images/users-alt.png' %}"></span>
                     <span class="text">Alumnos</span>
                 </a>
+                <div class="indicator"></div>
             </li>
-            <div class="indicator"></div>
+            
         </ul>
     </div>
-    <div class="navigation--space" id="navigation--space"></div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/1169c95eac.js" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- <script> document.getElementById("eprofile").style.display='none'; </script> -->
 
-    <!-- fin de los menú -->
+    {% comment %} PERFIL MODAL {% endcomment %}
+    <section class="section-profile" id="section-profile">
+        <div id="perfil_bg--blur" class="perfil_bg--blur">
+            <div class="perfil_bg--gradient" id="perfil_bg--gradient">
+                <div class="perfil_bg" id="perfil_bg">
+                    <!-- Perfil minimizado........................................ -->
+                    <div class="navbar--fill" id="navbar--fill"></div> 
+                    <div id="profile" class="profile">
+                        {% if user.foto_de_perfil == None %}
+                            <div class="profile_data--radiuspic" id="profile_data--radiuspic">
+                                <img src="{% static 'images/avatar/9.png' %}" class="profile_data--pic" id="profile_data--pic">
+                            </div>
+                        {% else %}
+                            <div class="profile_data--radiuspic" id="profile_data--radiuspic">
+                                <img src="{% if user.foto_de_perfil %} {{user.foto_de_perfil.url}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" class="profile_data--pic" id="profile_data--pic">
+                            </div>
+                        {% endif %}
+                        
+                        <div class="profile_data--name" id="profile_data--name">
+                            <h1>{{user.apodo}}</h1>
+                            {% comment %} <figure></figure> {% endcomment %}
+                            <h3>{{user.nombre}} {{user.apellido}}</h3>
+                            {% if  user.edad != None%}
+                                <p>{{user.edad}} años</p>
+                            {% endif %}
+                            {% comment %} <p>{{user.edad}}</p> {% endcomment %}
+                        </div>
+                        {% if user.biografia %}
+                            <div class="profile_data--description" id="profile_data--description">
+                                <p>{{user.biografia}}</p>
+                            </div>
+                        {% else %}
+                            <br>
+                        {% endif %}
+                        
+                        <div class="profile_data--numbers" id="profile_data--numbers">
+                            <ol>
+                                {% if user.telefono %}
+                                <li>
+                                    <h5>{{user.telefono}}</h5>
+                                    <p>CONTACTO</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+
+                                {% if user.peso %}
+                                <li>
+                                    <h5>{{user.peso}}</h5>
+                                    <p>PESO</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+                                
+                                {% if user.altura %}
+                                <li>
+                                    <h5>{{user.altura}}</h5>
+                                    <p>ALTURA</p>
+                                </li>
+                                {% else %}
+                                    <br>
+                                {% endif %}
+                            </ol>
+                        </div>
+                        <button id="profile_data--button" class="profile_data--button">
+                            <a href="{% url 'personas:perfil' %}">Editar Perfil</a> 
+                        </button>
+                        <a class="botonito" href="{% url 'logout' %}">Salir de la cuenta</a>
+                    </div>
+                    <!-- Fin perfil minimizado........................................ -->
+                </div>
+            </div>
+        </div>
+
+        <div class="aestethical-margin"></div>
+
+    </section>
+    
 
     <div class="wrapper_noticias">
-        <a class="turnback" href="admin_noticias.html">
-            <img src="assets/images/turn-back.png">
+        <div class="space"></div>
+        <a class="turnback" href="{% url 'posts:adminNoticia' %}">
+            <img src="{% static 'images/turn-back.png' %}">
         </a>
+
         <div class="noticia">
             <div class="imagen">
                 <img src="{{post.foto.url}}">
@@ -120,17 +217,30 @@
                     <h3>{{post.titulo}}</h3>
                 </div>
                 <div class="texto-contenido">
-                    <p>{{post.texto}}</p>   
+                    <p>{{post.texto|safe}}</p>   
                 </div>
             </div>
             <div class="formato">
+                <div class="iconitos">
+                    <a href="{% url 'posts:updateNotice' post.pk %}">
+                        <img src="{% static 'images/editar.png' %}">
+                    </a>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="delete_notice">
+                            <img src="{% static 'images/borrar.png' %}">
+                        </button>
+                    </form>
+                </div>
                 <div class="coments">
                     <div class="coments-overflow">
                         {% if comments.count == 0 %}
+
                             <h1>Parece que no hay comentarios! Sé el primero!</h1>
                         
                         {% endif %}
                         {% for comment in comments %}
+
                             <div class="coments--user">
                                 <div class="coments--userinfo">
                                     <img src="/public/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
@@ -138,42 +248,28 @@
                                 </div>
                                 <p>{{comment}}</p>
                             </div>
+
                         {% endfor %}
-                        {% comment %} <div class="coments--user">
-                            <div class="coments--userinfo">
-                                <img src="assets/images/avatar/2.png" alt="">
-                                <h5>Lalinchi</h5>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetursint laboriosam.</p>
-                        </div>
-                        <div class="coments--user">
-                            <div class="coments--userinfo">
-                                <img src="assets/images/avatar/7.png" alt="">
-                                <h5>user</h5>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetursint laboriosam.</p>
-                        </div>
-                        <div class="coments--user">
-                            <div class="coments--userinfo">
-                                <img src="assets/images/avatar/11.png" alt="">
-                                <h5>Don Juan</h5>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetursint laboriosam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquid? Deleniti consectetur consequatur ullam facere eveniet, dignissimos nulla pariatur quos delectus minima amet hic blanditiis illum nostrum assumenda est iste.</p>
-                        </div> {% endcomment %}
+                        
                     </div>
                 </div>
                 <form class="input_comment" method="POST" id="form_comment">
                     {% csrf_token %}
                     <input class="inputtext" type="text" name="texto" id="comment">
-                    <input class="boton" type="submit" value="Enviar">
+                    <input class="boton" type="submit" value="Enviar" name="send_comment">
                 </form>   
             </div>
         </div>
+
         <div class="rellenofinal"></div>
+
     </div>
     
 
-    <script src="https://kit.fontawesome.com/1169c95eac.js" crossorigin="anonymous"></script>
+    {% comment %} SCRIPTS {% endcomment %}
+    <script src="{% static 'js/sectionNewsComplete.js' %}"></script>
+    <script src="{% static 'js/modalPerfil.js' %}"></script>
+    <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
 
 </body>
 </html>

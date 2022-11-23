@@ -41,29 +41,6 @@
 }
 /*FIN FONTS-----------------------------------------------------------------------------------------------------*/
 
-/*INICIALIZACION--------------------------------------------------------------------------------------------------------------*/
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html{
-    width: 100%;
-    height: 100%;
-    font-size: 62.5%;
-}
-
-body{
-    width: 100%;
-    height: 100%;
-    font-size: 1em;
-    background-color: #eceef3;
-    line-height: 1.5em;
-}
-/*--------------------------------------------------------------------------------------------------------------*/
-
-
 /*POP-UP para cambiar de plan*/
 
 .planmensual--pop-up{
@@ -75,7 +52,6 @@ body{
     bottom: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.402);
-    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
@@ -92,12 +68,11 @@ body{
     align-items: center;
     justify-content: center;
 }
-.planmensual--pop-up_turnos > .planmensual--pop-up_wrap > .pop-up--first
-{
+/* .planmensual--pop-up_turnos > .planmensual--pop-up_wrap > .pop-up--first{
     width: 45rem;
 }
 .planmensual--pop-upt_turnos_dias{
-    /* display: none; */
+    display: none;
     width: 100vw;
     position: fixed;
     z-index: 50;
@@ -109,7 +84,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-
+ */
 .planmensual--pop-up.active{
     display: flex;
 }
@@ -117,8 +92,66 @@ body{
     background: #D6E1FF;
     border-radius: 32px;
 }
+/*Mensual suscription*/
+
+.landing-planmensual{
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1.5rem 0;
+}
+.planmensual-titulo img{
+    width: 6rem;
+    display:flex;
+    justify-content: center;
+    margin: auto auto 0.5rem;
+}
+.planmensual-titulo p{
+    font-family: "raleway semibold";
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+}
+.plan p{
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.landing-planmensual button{
+    /* width: 23%;
+    min-width: 14rem;
+    height: 16%;
+    min-height: 4rem; */
+    border-radius: 14px;
+    border-color: transparent;
+    background-color: #5135FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all .5s ease;
+    display:flex;
+    justify-content: center;
+    margin: 0 auto 3px;
+}
+.landing-planmensual button p{
+    text-decoration: none;
+    font-family: "raleway semibold";
+    font-size:1.4rem;
+    color: white;
+    display: flex;
+    align-content: center;
+    padding: 1rem 2rem;
+    margin: auto;
+}
+.landing-planmensual > button:hover{
+    transform: scale(1.08);
+}
 /*--------------------------------------------------------------------*/
-/*primer cuadrito real donde van los dato*/
+/* rimer cuadrito real donde van los dat
 .pop-up--data{
     width: 42rem;
     display: flex;
@@ -162,259 +195,68 @@ body{
     color: #5135FF;
     font-family: "raleway bold";
     top: 1px;
-}
+} */
+
+
 /*Primer cuadrito*/
+
 .pop-up--first{
-    /* width: 42rem; */
+    width: 42rem;
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    /* display: none; */
 }
-.pop-up--first.active
-{
+.pop-up--first.active{
     display: none;
 }
-
 .pop-up--first > p{
     font-family: "raleway semibold";
     font-size: 1.6rem;
     color: rgb(0, 0, 0);
-    margin: 2rem auto;
+    margin: 2rem auto 1rem;
 }
-
-/*Icono x------------------------------*/
-
-.planmensual--pop-up_wrap i{
-    padding: .5rem .5rem 0 0;
-    font-size: 2rem;
-    align-self: end;
-    margin-bottom: .5%;
+.pop-up--first > select{
+    width: fit-content;
+    margin: auto;
+    border-radius: 1rem;
+    padding: 0.3rem 0.8rem;
     cursor: pointer;
 }
-
-/*Seleccionar el alumno------------------------------*/
-.container {
-    width: 100%;
-    height: 35%;
-    padding: 2%;
-    display: flex;
-    justify-content: center;
-    font-family: "raleway medium";
-    font-size: 1.3rem;
-}
-
-.select-box {
-    display: flex;
-    width: 65%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.select-box .options-container {
-    background: #fff;
-    color: #000;
-    max-height: 0;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.4s;
-    border-radius: 8px;
-    overflow: hidden;
-
-    order: 1;
-}
-
-.selected {
-    background: #fff;
-    border-radius: 8px;
-    margin-bottom: 4px;
-    height: 30%;
-    color: #000;
-    position: relative;
-    order: 0;
-}
-
-.selected::after {
-    content: "";
-    background: url("../img/arrow-down.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-left: auto;
-;
-
-    transition: all 0.4s;
-}
-
-.select-box .options-container.actived {
-    max-height: 100%;
-    opacity: 1;
-    overflow-y: scroll;
-}
-
-.select-box .options-container.actived + .selected::after {
-    transform: rotateX(180deg);
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
-.select-box .options-container::-webkit-scrollbar {
-    width: 8px;
-    background: transparent;
-    border-radius: 8px;
-}
-
-.select-box .options-container::-webkit-scrollbar-thumb {
-    background: #62636662;
-    border-radius: 8px;
-}
-
-.select-box .option, .selected {
-    padding: 2% 2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.select-box .option:hover {
-    background: #e2e2e2b2;
-}
-
-.select-box label {
-    cursor: pointer;
-}
-
-.select-box .option .radio {
-    display: none;
-}
-
-/*Seleccionar Plan---------------------------------*/
-
-ul{
-    list-style: none;
-}
-.container_choices
-{
-    display: flex;
-    justify-content: space-around;
-}
-.container_choices > .choice
-{
-    text-align: center;
-    background: #FFFFFF;
-    border-radius: 18px;
-    font-family: "raleway medium";
-    font-size: 1.2rem;
-    color: rgb(0, 0, 0);
-    padding: 1.5rem;
-    cursor: pointer;
-}
-
-.container_choices > .choice > h3{
-    margin-top: .6rem;
-}
-
-.container_choices > input{
-    display: none;
-}
-.container_choices > input[type="radio"]:checked + label
-{
-    background-color: #5135FF;
-}
-
 .pop-up--first ul{
     display: flex;
     flex-direction: row;
     margin: auto;
     padding: 0 1rem;
 }
-
 .pop-up--plan{
     background: #FFFFFF;
     border-radius: 18px;
     line-height: 2em;
-    margin: 1rem 0.5rem;
+    margin: 0 0.5rem;
     cursor: pointer;
 }
-.pop-up--first > ul > input[type="radio"]
-{
+.pop-up--first > ul > input[type="radio"]{
     display: none;
 }
-.pop-up--first >  ul > input[type="radio"]:checked + label
-{
+.pop-up--first >  ul > input[type="radio"]:checked + label{
     background-color: #5135FF;
     color: white;
 }
-.pop-up--first >  ul > input[type="radio"]:checked + label > p
-{
+.pop-up--first >  ul > input[type="radio"]:checked + label > p{
     color: white;
 }
-
 .pop-up--plan p{
     height: auto;
     font-family: "raleway medium";
-    font-size: max(1vw,min(1.4rem));
+    font-size: 1.4rem;
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 1rem;
 }
-/*Mensual suscription*/
 
-.landing-planmensual{
-    border-radius: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 1.5rem;
-}
-.planmensual-titulo img{
-    width: 6rem;
-    display:flex;
-    justify-content: center;
-    margin: 10px auto 1%;
-    /* border: 1px black dashed; */
-}
-.planmensual-titulo p{
-    font-family: "raleway semibold";
-    font-size: 2rem;
-    text-align: center;
-    margin: 2px auto 10px;
-    /* border: 1px black dashed; */
-}
-.plan p{
-    font-family: "raleway semibold";
-    font-size: max(0.9vw,min(1.4rem));
-    text-align: center;
-    margin: 16px 0 8px;
-}
-
-.landing-planmensual button{
-    width: 23%;
-    min-width: 14rem;
-    height: 16%;
-    min-height: 4rem;
-    border-radius: 14px;
-    border-color: transparent;
-    background-color: #5135FF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display:flex;
-    justify-content: center;
-    margin: 0 auto 3px;
-}
-.landing-planmensual button p{
-    text-decoration: none;
-    font-family: "raleway semibold";
-    font-size: max(0.75vw,min(1.4rem));
-    color: white;
-    display: flex;
-    align-content: center;
-    margin: auto;
-}
-/*Botones (siguiente - atras)------------------------------------*/
-.planmensual--pop-up_wrap #submit_button{
+/*Botones (siguiente - atras)---------------------*/
+.pop-up--first #first_button{
     text-decoration: none;
     font-family: "raleway semibold";
     font-size: 1.4rem;
@@ -428,84 +270,21 @@ ul{
     margin-top: 1.6rem;
     margin-bottom: 1.3rem;
 }
-#first_secondbutton{
+.pop-up--first #out_modal{
     text-align: center;
-    text-decoration: none;
     color: #000;
-    font-family: "raleway bold";
+    font-family: "raleway semibold";
     font-size: 1.2rem;
     background: transparent;
     border: none;
     cursor: pointer;
 }
 
-.planmensual--pop-up_wrap #first_button{
-    text-decoration: none;
-    font-family: "raleway semibold";
-    font-size: 1.4rem;
-    color: white;
-    padding: 1rem 3rem;
-    margin: auto;
-    border-radius: 14px;
-    border: none;
-    background-color: #5135FF;
-    cursor: pointer;
-    margin-top: 1.6rem;
-    margin-bottom: 1.3rem;
-}
-
-.planmensual--pop-up_wrap #second_button
-{
-    text-decoration: none;
-    font-family: "raleway semibold";
-    font-size: 1.4rem;
-    color: white;
-    padding: 1rem 3rem;
-    margin: auto;
-    border-radius: 14px;
-    border: none;
-    background-color: #5135FF;
-    cursor: pointer;
-    margin-top: 1.6rem;
-    margin-bottom: 1.3rem;
-}
-.container_buttons{
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    justify-content: center;
-    margin-top: auto;
-}
-
-#form_close{
-    border-radius: 18px;
-    border: none;
-    background-color: #5135FF;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    margin: 0 auto;
-    font-family: "raleway semibold";
-    font-size: 1.7rem;
-    color: white;
-    padding: 1.3rem 3rem;
-}
-
-.planmensual--pop-up_wrap #second_secondbutton
-{
-    text-align: center;
-    text-decoration: none;
-    color: #000;
-    font-family: "raleway bold";
-    font-size: 1.2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
 .pop-up--second{
     width: 42rem;
     border-radius: 32px;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     padding: 1.5rem;
     height: 100%;   
     display: none;
@@ -518,19 +297,21 @@ ul{
     text-align: center;
 }
 
-.planmensual--pop-upt_turnos_dias > form >.pop-up--second.active
-{
+
+.update_turno > #pop-up--first.active{
     display: none;
 }
+.update_turno > #pop-up--second.active{
+    display: flex;
+}
+
 
 .pop-up--second > p{
     font-family: "raleway semibold";
     font-size: 1.4rem;
     color: rgb(0, 0, 0);
-    margin: 1rem auto;
+    margin: 2rem auto 1.2rem;
 }
-
-/*dias-------------------------------------------*/
 .pop-up--second ul{
     display: flex;
     justify-content: space-between;
@@ -544,46 +325,31 @@ ul{
     min-width: 7rem;
     max-width: 7rem;
 }
-.update_turno > #pop-up--first.active
-{
-    display: none;
-}
 
-.update_turno > #pop-up--second.active
-{
-    display: flex;
-}
-
-.day > select
-{
+.day > select{
     position: absolute;
     z-index: -1;
     pointer-events: none;
     opacity: 0;
 }
-/* .day >.custom-num{
+.day >.custom-num{
     display: flex;
     flex-flow: column;
     justify-content: center;
-} */
-.day >.custom-num > input[type="number"]
-{
-    /* background-color: red; */
+}
+.day >.custom-num > input[type="number"]{
     width: 2rem;
     height: 4rem;
     border: none;
     text-align: center;
     outline: none;
 }
-
 .day >.custom-num > input[type="number"]::-webkit-inner-spin-button, 
 .day >.custom-num > input[type="number"]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
-
 input[type=number] { -moz-appearance:textfield; }
-
 .day > p{
     font-family: "raleway semibold";
     font-size: 1.4rem;
@@ -593,30 +359,10 @@ input[type=number] { -moz-appearance:textfield; }
     cursor: pointer;
 }
 
-/* .selection p:first-of-type{
-    margin-top: 1rem;
-} */
-/*dias seleccionados*/
-
-/* .selection{
-    background: #ADABFF;
-    border: 3px solid #8976FF;
-    border-radius: 18px;
-    height: 90%;
-    width: 19%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-} */
-
-/*horario*/
 .day> .custom-num{
     display: none;
 }
-
-#form_add_days
-{
+#form_add_days{
     min-height: 26rem;
     height: 26rem;
 }
@@ -624,47 +370,15 @@ input[type=number] { -moz-appearance:textfield; }
     background: #ADABFF;
     border: 3px solid #8976FF;
 }
-
 .day.select > .custom-num.select {
     display: flex;
-    /* width: 90%; */
+    width: 100%;
     /* border-radius: 3em; */
     background: #ADABFF;
     transition: 1s;
     align-items: center;
-    
     justify-content: center;
 }
-.day.select > .custom-num.select >input{
-    background: #ADABFF;
-}
-
-.custom-num i{
-    transform: rotateZ(-90deg);
-    align-self: center;
-    cursor: pointer;
-    width: 30%;
-}
-
-.num-input::-webkit-outer-spin-button,
-.num-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.num-input {
-    font-family: "raleway bold";
-    font-size: 1.5rem;
-    background:none;
-    border:none;
-    color:#000;
-    width: 2rem;
-}
-
-.num-input:focus{
-    outline: none;
-}
-/*texto hs*/
 .hs{
     font-family: "raleway regular";
     font-size: 1.5rem;
@@ -672,9 +386,40 @@ input[type=number] { -moz-appearance:textfield; }
     background:none;
     border:none;
     color:#000;
-    
-   
 }
+
+.container_buttons{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+.planmensual--pop-up_wrap #second_button{
+    text-decoration: none;
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
+    color: white;
+    padding: 1rem 3rem;
+    margin: auto;
+    border-radius: 14px;
+    border: none;
+    background-color: #5135FF;
+    cursor: pointer;
+    margin-top: 1.6rem;
+    margin-bottom: 1.3rem;
+}
+.planmensual--pop-up_wrap #second_secondbutton{
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-family: "raleway bold";
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 
 /*----------------------------------------------------------------------*/
 /*Tercer cuadrito*/
@@ -687,8 +432,7 @@ input[type=number] { -moz-appearance:textfield; }
     padding: 2rem 3rem;
     display: none;
 }
-.pop-up--third.active
-{
+.pop-up--third.active{
     display: flex;
 }
 
@@ -699,64 +443,20 @@ input[type=number] { -moz-appearance:textfield; }
     text-align: center;
     margin: 3rem auto;
 }
-
-/*Info cambiada*/
-.plan-changed{
-    width: 100%;
-    background: #FFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 18px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 3rem;
-}
-
-.plan-changed > p:first-of-type{
+.pop-up--third button{
+    text-decoration: none;
     font-family: "raleway semibold";
-    font-size: 1.8rem;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding-bottom: 2rem;
-}
-
-.plan-changed > p:last-of-type{
-    font-family: "raleway semibold";
-    font-size: 1.5rem;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding-bottom: 1rem;
-}
-
-.plan-changed ul{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.plan-changed ul li{
-    width: 6rem;
-    height: 6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background: #ADABFF;
-    border: 2px solid #8976FF;
-    border-radius: 18px;
-}
-
-.plan-changed ul li p{
-    font-family: "raleway bold";
     font-size: 1.4rem;
-    color: rgb(0, 0, 0);
-    text-align: center;
+    color: white;
+    padding: 1rem 3rem;
+    margin: auto;
+    border-radius: 14px;
+    border: none;
+    background-color: #5135FF;
+    cursor: pointer;
+    margin-top: 1.6rem;
+    margin-bottom: 1.3rem;
 }
-
-
-/*----------------------------------------------------------------------------*/
-/* Celphone */
 
 /*Section shifts*/
 
@@ -797,6 +497,11 @@ input[type=number] { -moz-appearance:textfield; }
     }
     .pop-up--second {
         width: 30rem;
+    }
+    .pop-up--second ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     .pop-up--third {
         width: 30rem;

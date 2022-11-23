@@ -12,26 +12,9 @@ ejercicios.forEach(element => {
                 screen_ejercicio.removeChild(old_child)
             }
             let ejer_clone = element.cloneNode(true)
-            screen_ejercicio.appendChild(ejer_clone)
-            // let pasos = ejer_clone.children[2]
-            // let video = ejer_clone.children[3]
-    
-            // console.log(pasos)
-            // console.log(video)
-    
-            // ejercicio_pasosid.appendChild(pasos)
-            // pasos.classList.add("active")
-            
-            // ejercicio_videoid.appendChild(video)
-            // video.classList.add("active")
-
-            
+            screen_ejercicio.appendChild(ejer_clone)       
         }
         
         
     })
 })
-
-// function desactiveDetalle() {
-//     detalle.forEach(element => element.classList.remove("active"));
-//   }

@@ -19,16 +19,7 @@
     font-family: "raleway black";/*900*/
     src: url("fonts/raleway/static/Raleway-Black.ttf");
 }
-html{
-    font-size: 62.5%;
-}
-body {
-    margin: 0;
-    padding: 0;
-    background: #fafafa; 
-    font-size: 1em;
-    line-height: 1.5em;
-}
+
 
 /* fin de FONTS */
 /* fondo de mentiritas -------------------- */
@@ -118,9 +109,9 @@ body {
     max-height: 60rem;
     margin: 3% auto;
 
-    display: flex;
+    /* display: flex;
     align-content: center;
-    justify-content: center;
+    justify-content: center; */
 
     transform: scale(0.6);
     opacity: 0;
@@ -179,6 +170,8 @@ body {
 }
 .ejercicio-nombre-c1 input{
     font-family: "raleway medium";
+    border: none;
+    border-radius: 14px;
     font-size: 1.4rem;
     width:90%;
     margin: 0;
@@ -226,9 +219,10 @@ body {
     width: 93%;
     font-family: "raleway medium";
     font-size: 1.4rem;
-    border-radius: 6px;
+    border: none;
+    border-radius: 14px;
     padding: 13px;
-
+    resize: none;
     /* border: 1px dashed black; */
 }
 
@@ -355,11 +349,6 @@ body {
     }
     .pop-up{
         width: 94vw;
-        position: fixed;
-        top: 0; bottom: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.402);
-        visibility: hidden;
     }
     .tipoejercicio h1{
         font-family: "raleway bold";
@@ -369,9 +358,10 @@ body {
     }
 }
 /* query celular */
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .pop-up{
         width: 100vw;
+        left:0;
     }
     .pop-up-wrap{
         width: 98%;
@@ -432,7 +422,7 @@ body {
     }
     #close{
         position: absolute;
-        top: -36rem;
+        top: -34rem;
     }
     .tipoejercicio h1{
         font-family: "raleway semibold";
@@ -449,7 +439,7 @@ body {
         margin: 0 2% 3% 0;
     }
     .guardarejercicio{
-        width: 36rem;
+        width: 100%;
         margin: auto;
     }
     .tipos-ejercicios:hover{

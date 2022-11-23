@@ -23,9 +23,9 @@ html{
     font-size: 62.5%;
 }
 body {
+    font-feature-settings: 'pnum' on, 'lnum' on;
     margin: 0;
     padding: 0;
-    background: #ffffff; 
     font-size: 1em;
     line-height: 1.5em;
 }
@@ -33,13 +33,10 @@ body {
 /* --------- Historial de rutinas --------------------------- */
 
 .historialrutinas{
-    height:fit-content;
-    position:fixed;
-    width: 93.6vw;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 7rem;
 }
 .historial{
     height: 90%;
@@ -47,8 +44,8 @@ body {
     max-width: 110rem;
     background: #b8b4ff;
     border-radius: 32px;
-
-    margin: 2rem auto;
+    overflow: hidden;
+    margin: 6rem auto 0;
 }
 
 /* -- elegir fecha --------- */
@@ -57,6 +54,8 @@ body {
     width: 40%;
     height: fit-content;
     margin: 0 auto;
+    display: flex;
+    flex-flow: column;
     /* border: 1px #000000 solid; */
 }
 .pickdate div{
@@ -74,14 +73,14 @@ body {
 .pickdate > div > p {
     font-family: "raleway semibold";
     font-size: 1.8rem;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     margin: auto; 
 }
 .pickdate p{
     font-family: "raleway bold";
     font-size: 2rem;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     margin: auto;   
 }
@@ -89,26 +88,24 @@ body {
     border-radius: 18px;
     border: none;
     padding: 1rem 2rem;
-    margin: 1rem auto 2rem;
+    margin: 1rem auto;
     font-family: 'raleway bold';
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 .pickdate > .botonito{
-    margin: 1rem auto 2rem;
+    margin: 0 auto 2rem;
     border-radius: 14px;
     border: none;
     background-color: #5135FF;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    /* display: flex; */
-    /* justify-content: center; */
-    /* margin: 1rem auto; */
     padding: 1rem 3rem;
     cursor: pointer;
     transition: all .5s ease;
     font-family: "raleway semibold";
     color: white;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 /* ---- Descargar rutina --------------- */
 
@@ -129,8 +126,8 @@ body {
 /* --- Visualización de rutinas ----- */
 
 .rutinas{
-    height: 75%;
-    width: 98%;
+    height: 46rem;
+    padding: 0 1rem 3rem 1rem;
     display:flex;
     justify-content: space-evenly;
     align-content: center;
@@ -185,45 +182,21 @@ body {
     margin: 1% 1%;
     /* border: 1px solid black; */
 }
-/* .ejercicio{
-    width: 30%;
-    min-width: 8rem;
-    max-width: 12rem;
-    margin: 2rem 1rem 1rem 0;
-    background: #101010;
-    border-radius:6px;
-    display: flex;
-    flex-flow: column;
+
+.turnback {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }
-.imgejercicio{
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    background-color: rgb(225, 225, 225);
-    border-radius: 10px;
-    margin: -2rem auto 1rem;
-}
-.imgejercicio img{
+.turnback img {
     width: 5rem;
-    padding: 4px;
-    display:flex;
-    align-content: center;
 }
-.ejercicio p{
-    font-family: "raleway semibold";
-    font-size: 1.2rem;
-    text-align: center;
-    color:white;
-    margin: 0 auto 0.5rem;
-} */
 
 /*----------------------------------------------------*/
 /* query pantalla mediana */
 @media (max-width: 1024px) {
     .historial{
-        height: 96%;
         width: 96%;
-        margin: 2rem auto;
     }
     .historial button{
         background: none;
@@ -237,7 +210,7 @@ body {
     }
 }
 /* query celular */
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .navigation--space{
         height: 0rem;
         visibility: hidden;
@@ -245,11 +218,13 @@ body {
     .historialrutinas{
         width: 100%;
         position:static;
+        padding:0;
+        display: block;
     }
     .historial{
-        height: fit-content;
+        height: auto;
         width: 96%;
-        margin: 1rem auto;
+        margin: 7rem auto 8rem;
     }
     .pickdate{
         width: 90%;
@@ -265,18 +240,20 @@ body {
         height: 2.6rem;    
     }
     .rutinas{
-        height: fit-content;
+        height: auto;
         flex-flow: column;
-        padding-bottom: 3rem;
+        padding: 0 1rem 3rem 1rem;
     }
     .mujeres{
         height: fit-content;
+        min-height: 5rem;
         width: 100%;
         margin-bottom: 2rem;
         min-width: 24rem;
     }
     .hombres{
         height: fit-content;
+        min-height: 5rem;
         width: 100%;
         min-width: 24rem;
     }

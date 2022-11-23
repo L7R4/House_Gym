@@ -4,6 +4,7 @@ from .models import Noticia,Comentario
 from personas.models import Persona
 from django.http import JsonResponse
 from .forms import CrearNoticia
+from django.urls import reverse_lazy
 
 # SECCIONES DE NOTICIAS DE VISTA ALUMNO
 class Noticias(generic.ListView):
@@ -17,7 +18,6 @@ class Noticias(generic.ListView):
         context["noticias_minimized"] = Noticia.objects.all()[8:11]
         context["noticias_next_minimized"] = Noticia.objects.all()[12:13]
         return context
-
 
 
 class DetailNoticia(generic.DetailView):
@@ -37,17 +37,15 @@ class DetailNoticia(generic.DetailView):
         persona = request.user
         texto = request.POST.get("texto")
         Comentario.objects.create(persona=persona,noticia=post,texto=texto)
-        return render(request, self.template_name,{
-            'comments': post.comentario_set.all()
-        })
+        return redirect("posts:detail_noticia", post.id)
+            
         
-
 
 
 # SECCIONES DE NOTICIAS DE VISTA ADMIN        
 class AdminNoticias(generic.ListView):
     model = Noticia
-    template_name = "admin_noticias.html"
+    template_name = "admin_noticia_2.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,7 +54,8 @@ class AdminNoticias(generic.ListView):
         context["noticias_minimized"] = Noticia.objects.all()[8:11]
         context["noticias_next_minimized"] = Noticia.objects.all()[12:13]
         return context
-    
+
+
 class AdminNoticiaDetail(generic.DetailView):
     model = Noticia
     template_name = "admin_noticias-noticiacompleta_ailin.html"
@@ -70,13 +69,19 @@ class AdminNoticiaDetail(generic.DetailView):
         })
     
     def post(self,request, *args, **kwargs):
-        post = self.get_object()
-        persona = request.user
-        texto = request.POST.get("texto")
-        Comentario.objects.create(persona=persona,noticia=post,texto=texto)
-        return render(request, self.template_name,{
-            'comments': post.comentario_set.all()
-        })
+        button = request.POST
+        if "send_comment" in button: 
+            post = self.get_object()
+            persona = request.user
+            texto = request.POST.get("texto")
+            Comentario.objects.create(persona=persona,noticia=post,texto=texto)
+            return render(request, self.template_name,{
+                'comments': post.comentario_set.all()
+            })
+        elif "delete_notice" in button:
+            post = self.get_object()
+            post.delete()
+            return redirect("posts:adminNoticia")
 
 
 class CreateNoticias(generic.View):
@@ -91,12 +96,6 @@ class CreateNoticias(generic.View):
     def post(self,request,*args, **kwargs):
         form = CrearNoticia(request.POST, request.FILES)
         if form.is_valid():
-        # texto = request.POST.get("texto")
-        # titulo = request.POST.get("titulo")
-        # foto = request.POST.get("foto")
-        # print(foto)
-        # print(titulo)
-        # print(texto)
             noticia = Noticia()
             noticia.foto = form.cleaned_data["foto"]
             noticia.titulo = form.cleaned_data["titulo"]
@@ -106,3 +105,12 @@ class CreateNoticias(generic.View):
             print(form)
             
         return redirect("posts:adminNoticia")
+
+
+class UpdateNotice(generic.UpdateView):
+    model = Noticia
+    template_name = "admin_noticias-crear.html"
+    form_class = CrearNoticia
+    # fields = '__all__'
+
+    success_url = reverse_lazy("posts:adminNoticia")
