@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Gym House</title>
+</head>
+<body>
+
+    <!-- Landing page -->
+    <input type="checkbox" class="checkbox" id="menu-toogle"/>
+    <label for="menu-toogle" class="menu-toogle">
+        <img class="icon-menu" src="{% static '/images/menu.png' %}">
+        <img class="icon-cruz"src="{% static '/images/cross.png' %}">
+    </label>
+
+    <div class="main__button">
+        <button>Iniciar Sesion</button>
+    </div>
+
+    <nav class="menu">
+        <div class="menu-icons">
+            <ul class="nav__items"> 
+                <li>
+                    <a href="#sobrenosotros">Sobre Nosotros</a>
+                </li>
+                <li>
+                    <a href="#noticias">Noticias</a>
+                </li>
+                <li>
+                    <a href="#horarios">Horarios</a> 
+                </li>
+                <li>
+                    <a href="#ubicacion">Ubicación</a>
+                </li>
+                <li>
+                    <a href="#contacto">Contactanos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+     <!-- Modal -->
+    <div class="modal_login">
+        <img class="login-cruz"src="{% static '/images/cross.png' %}">
+        <form action="" method ="POST">
+            {% csrf_token %}
+            <label for="username">Usuario</label>
+            <input class="input" type="text" id="username" name="username">
+            <label for="password">Contraseña</label>
+            <input class="input" type="password" id="password" name="password">
+            <div class="showPass">
+                <input class="check" type="checkbox" onclick="showPassword()">
+                <p>Mostrar contraseña</p>
+            </div>
+            <input type="submit" id="ingresar" value="Ingresar"> 
+        </form>
+    </div>
+    <!-- End modal -->
+
+    <main class="main__background">
+        <div class="relleno-menu"></div>
+        <div class="main__container"> 
+            <div class="title__container">
+                <h1 class="main__title--border">House <br>Gym</h1>
+                <h1 class="main__title">House <br>Gym</h1>
+            </div>
+            <figure class="main__image">
+                <img src="{% static 'images/Image main.svg' %}" alt="">
+            </figure>
+        </div>
+    </main>
+
+    <!-- Sobre nosotros -->
+
+    <section class="sobrenosotros" id="sobrenosotros">
+        <h1 class="sobrenosotros__titulo">Sobre nosotros</h1>
+        <p class="sobrenosotros__texto">
+            Todos sabemos que el entrenamiento físico es muy bueno, pero en <strong>“House Gimnasio”</strong> lo queremos hacer divertido. 
+            Te ayudaremos a encontrar una rutina que se adapte a tu estilo de vida y tus metas personales; ya sea que recién estés comenzando a entrenarte o que tengas experiencia.
+            Tenemos lo que necesitas para mantenerte sano y que te sientas bien. 
+            Creamos un espacio donde todos puedan venir y pasarla bien haciendo ejercicio. Queremos que cuando salgas del “gym” te sientas mejor que nunca. 
+            Dar el primer paso puede ser lo más difícil. 
+            Nosotros nos encargamos del resto. Nuestro objetivo es que mejores tu salud, mejorando tu condición física. 
+            
+        </p> 
+
+        <div class="sobrenosotros__imagenes"> <!-- hacer las imagenes responsives -->
+            <div class="trainer_1">
+                <figure>
+                    <img src="{% static 'images/houseGym/fede.png' %}">
+                </figure> 
+                <p>Federico Maza</p>
+            </div>
+            <div class="trainer_2">
+                <figure>
+                    <img src="{% static 'images/houseGym/moi.png' %}">
+                </figure> 
+                <p>Moira <br>With</p>
+            </div>
+            
+        </div>
+        
+        <p class="sobrenosotros__texto">
+            House Gym es un emprendimiento familiar, sus dueños son Federico, profesor de educación física y su esposa MOIRA,  contadora.<br> 
+            Un equipo que se complementa perfecto para llevar adelante todas las tareas del gym.
+            Nuestra visión es la de ser líderes promotores de la vida saludable y en familia en la zona norte de Resistencia; seguir creciendo en el rubro y afianzarnos como empresa local. 
+
+        </p>
+    </section>
+
+    <!-- Noticias -->
+    
+    <div class="noticias" id="noticias">
+        <div class="slider-button"> 
+            <button id="button-left" class="button">
+              <img src="{% static 'images/left arrow.png' %}" alt="">
+            </button>
+        </div>
+        <div id="slider-container" class="slider-container"> <!-- Resolver responsive! -->
+            <div class="slider" id="slider">
+                {% for post in posts %}
+                    <div class="slider__element"> 
+                        <a href="index_noticia.html">
+                            <img src="{{post.foto.url}}" alt="" />
+                        </a>
+                        <div class="element__detalle"> 
+                            <h6>{{post.titulo}}</h6>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="slider-button"> 
+            <button id="button-right" class="button">
+              <img src="{% static 'images/right arrow.png' %}" alt="">
+            </button>
+        </div> 
+    </div>
+
+    <!-- Ubicación -->
+
+    <section class="ubicacion" id="ubicacion"> 
+        <h1 class="ubicacion_text"> 
+            Nuestro gymnasio se encuentra en el San Fernando 3965. Barrio 130 Viviendas. Zona Hipermercado Libertad. 
+        </h1> 
+        <iframe class="ubicacion_mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.870679030558!2d-58.96320947942016!3d-27.410963687717057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450dd4ea307821%3A0x20160f1de01dbb45!2sHouse.Gimnasio!5e0!3m2!1ses-419!2sar!4v1659881013184!5m2!1ses-419!2sar" 
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Horarios -->
+
+    <section class="horarios" id="horarios"> 
+        <h1 class="horarios__title">
+            Nuestros horarios
+        </h1> 
+        <p class="horarios__text">¿Alguna vez terminaste de entrenar y te arrepentiste? </p>
+        <div class="agenda"> 
+            <div class="dias">
+                <div class="lun">
+                    <div>
+                        <h6>LUN</h6>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="mar">
+                    <div>
+                        <h6>MAR</h6>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="mie">
+                    <div>
+                        <h6>MIE</h6>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="jue">
+                    <div>
+                        <h6>JUE</h6>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="vie">
+                    <div>
+                        <h6>VIE</h6>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Contacto -->
+
+    <section class="contacto" id="contacto">
+        <h1 class="contacto_title">Contactanos!</h1>
+        <button class="contacto_mandarmensaje" href="https://wa.me/543624863322/?text=Holaa" target="_blank"><p>MANDAR MENSAJE</p></button>
+        <div class="contacto_redes"> 
+            <figure>
+                <img src="{% static 'images\instagram.png' %}">
+                <a href="https://www.instagram.com/">@HouseGym</a>
+            </figure>
+            <figure>
+                <img src="{% static 'images\twitter.png' %}">
+                <a href="https://www.twitter.com/">House_Gym</a>
+            </figure>
+            <figure>
+                <img src="{% static 'images\facebook.png' %}">
+                <a href="https://www.facebook.com/">House Gym Resistencia</a>
+            </figure>
+            <figure>
+                <img src="{% static 'images\whatsapp.png' %}">
+                <a href="https://wa.me/543624863322/">+54 362 4123456</a> <!-- cambiar redes -->
+            </figure>
+        </div>
+    </section>
+    <style>
+        .a{
+            width: 60%; 
+            height: 800px;
+        }
+    </style>
+    <div class="a">
+        <iframe src='https://my.spline.design/sectionentrenar-c64337c6694ce4228d51bac9e0736355/' frameborder='0' width='100%' height='100%'></iframe>
+    </div>
+    
+    <script>
+        function showPassword(){
+            var x= document.getElementById("password");
+            if (x.type === "password"){
+                x.type = "text";
+            }else{
+                x.type = "password";
+            }
+        }
+    </script>
+    <script src="{% static 'js/slider_noticias.js' %}"></script>
+    <script src="{% static 'js/modal_login.js' %}"></script>
+    <script src="{% static 'js/prueba.js' %}"></script>
+</body>
+</html>

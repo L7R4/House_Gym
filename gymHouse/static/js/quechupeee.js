@@ -1,14 +1,16 @@
-let ejercicios = document.querySelectorAll(".ejercicio")
+let ejercicios = document.querySelectorAll(".ejer_container")
 let form_child = document.querySelector(".ejercicio-pasos > form")
 let ejercicios_in_div = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejercicio > label")
 let ejercicio_text = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejercicio > p")
 let ejercicios_text_arrays = [];
-let n = document.getElementById("n")
-console.table(n)
+const button_submit = document.getElementById("button_submit_agregar_rutina")
+button_submit.style.pointerEvents = 'none'
+
 
 ejercicios.forEach(element => {
     element.addEventListener("click", ()=>{
-        let title_element = element.parentElement.parentNode.children[0].children[0]
+        button_submit.style.pointerEvents = 'unset'
+        let title_element = element.parentElement.parentElement.parentElement.children[0].children[0]
 
         let form_child_divs = document.querySelectorAll(".ejercicio-pasos > form > div ")
         let form_child_divs_arr = Array.from(form_child_divs)
@@ -26,6 +28,8 @@ ejercicios.forEach(element => {
             div_ejercicios.appendChild(ejer)
             crearDiv.appendChild(div_ejercicios)
             form_child.appendChild(crearDiv)
+            // activar button
+            
             
         }else{
             if (form_child.getElementsByClassName(title_element.textContent.toLocaleLowerCase()).length>0) {
@@ -53,9 +57,9 @@ ejercicios.forEach(element => {
                 form_child_divs_arr = document.querySelectorAll(".ejercicio-pasos > form > div ")
             }
         }
-        console.table(ejer.children[0].checked)
-        ejercicios_in_div = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejercicio > label")
-        ejercicio_text = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejercicio > p")
+
+        ejercicios_in_div = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejer_container > label")
+        ejercicio_text = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper > .ejer_container > p")
       
         ejercicios_text_arrays.push(element.children[1].children[2].textContent)
 
@@ -63,6 +67,7 @@ ejercicios.forEach(element => {
         let cant_div_types = document.querySelectorAll(".ejercicio-pasos > form > div > .ejercicios__wrapper")
         ejercicios_in_div.forEach(e =>{
             e.children[0].addEventListener("click", ()=>{
+                let validate_button = document.querySelectorAll(".ejercicio-pasos > form > div")
                 e.parentElement.remove()
                 ejercicios_text_arrays = ejercicios_text_arrays.filter((ejer) => ejer !== e.children[2].textContent)
 
@@ -71,6 +76,9 @@ ejercicios.forEach(element => {
                         div.parentElement.remove()
                     }
                 })
+                if (validate_button.length == 0) {
+                    button_submit.style.pointerEvents = 'none'
+                }
 
             })
         })
@@ -79,6 +87,7 @@ ejercicios.forEach(element => {
     })
  
 });
+
 
 
 

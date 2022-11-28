@@ -258,6 +258,7 @@
 /*Botones (siguiente - atras)---------------------*/
 .pop-up--first #first_button{
     text-decoration: none;
+    pointer-events: none;
     font-family: "raleway semibold";
     font-size: 1.4rem;
     color: white;
@@ -349,7 +350,39 @@
   -webkit-appearance: none; 
   margin: 0; 
 }
-input[type=number] { -moz-appearance:textfield; }
+input[type=number] { 
+    /* -moz-appearance:textfield;  */
+    width: 50%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-align: center;
+
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.disminuir, .aumentar
+{
+    background-color: transparent;
+    background-color: white;
+    border-radius: 5px;
+    border-color: transparent;
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+}
+
+.custom-num > div > input
+{
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+}
+
 .day > p{
     font-family: "raleway semibold";
     font-size: 1.4rem;
@@ -408,6 +441,7 @@ input[type=number] { -moz-appearance:textfield; }
     cursor: pointer;
     margin-top: 1.6rem;
     margin-bottom: 1.3rem;
+    pointer-events: none;
 }
 .planmensual--pop-up_wrap #second_secondbutton{
     text-align: center;

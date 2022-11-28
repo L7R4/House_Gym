@@ -237,13 +237,21 @@ body{
 {
     display: none;
 }
-.classmates_names > .alumnos > li > img{
-    height: 4rem;
+.classmates_names > .alumnos > li > a > img{
+    height: 100%;
     width: auto;
     border: 1.5px solid rgba(0, 0, 0, 0.795);
     border-radius: 50%;
     padding: 0.3rem;
     margin-right: 1rem;
+}
+.classmates_names > .alumnos > li > a{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 .classmates_names > .alumnos > li{
     display: flex;
@@ -251,6 +259,8 @@ body{
     font-family: "raleway semibold";
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    width: 100%;
+    height: 4rem;
 }
 .shifts_info--designed{
     width: 90%;

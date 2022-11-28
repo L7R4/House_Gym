@@ -238,6 +238,13 @@
         display: block;
     }
 }
+@media screen and (max-width:350px)
+{
+    .indicator
+    {
+        width: 5.6rem;
+    }
+}
     
 
 /*---------------------------------------------------------*/

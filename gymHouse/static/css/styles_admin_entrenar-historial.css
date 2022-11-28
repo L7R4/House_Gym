@@ -19,13 +19,18 @@
     font-family: "raleway black";/*900*/
     src: url("fonts/raleway/static/Raleway-Black.ttf");
 }
+
+*
+{
+    margin: 0;
+    padding: 0;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    box-sizing: border-box;
+}
 html{
     font-size: 62.5%;
 }
 body {
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    margin: 0;
-    padding: 0;
     font-size: 1em;
     line-height: 1.5em;
 }
@@ -33,19 +38,21 @@ body {
 /* --------- Historial de rutinas --------------------------- */
 
 .historialrutinas{
-    height: 100vh;
     display: flex;
     align-items: center;
     padding: 0 0 0 7rem;
+    height: 100vh;
+    flex-flow: column;
 }
 .historial{
     height: 90%;
+    display: flex;
+    flex-flow: column;
     width: 90%;
     max-width: 110rem;
     background: #b8b4ff;
     border-radius: 32px;
     overflow: hidden;
-    margin: 6rem auto 0;
 }
 
 /* -- elegir fecha --------- */
@@ -126,13 +133,11 @@ body {
 /* --- Visualización de rutinas ----- */
 
 .rutinas{
-    height: 46rem;
+    height: 100%;
     padding: 0 1rem 3rem 1rem;
     display:flex;
     justify-content: space-evenly;
     align-content: center;
-    /* border: 1px black solid; */
-    margin: auto;
 }
 .mujeres{
     height: 100%;
@@ -171,9 +176,9 @@ body {
     margin: 1rem auto;
     /* border: 1px solid black; */
 }
-.categoria p{
+.categoria >p{
     font-family: "raleway bold";
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 .categoria > div{
     display: flex;
@@ -184,9 +189,8 @@ body {
 }
 
 .turnback {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+    align-self: end;    
+    margin: 2rem 2rem;
 }
 .turnback img {
     width: 5rem;
@@ -219,15 +223,16 @@ body {
         width: 100%;
         position:static;
         padding:0;
-        display: block;
     }
     .historial{
-        height: auto;
         width: 96%;
         margin: 7rem auto 8rem;
+        margin-bottom: 0;
+        margin-top: 0;
     }
     .pickdate{
         width: 90%;
+        height: 20%;
     }
     .historial button{
         background: none;
@@ -242,18 +247,21 @@ body {
     .rutinas{
         height: auto;
         flex-flow: column;
+        height: 80%;
         padding: 0 1rem 3rem 1rem;
     }
     .mujeres{
         height: fit-content;
         min-height: 5rem;
         width: 100%;
+        height: 50%;
         margin-bottom: 2rem;
         min-width: 24rem;
     }
     .hombres{
         height: fit-content;
         min-height: 5rem;
+        height: 50%;
         width: 100%;
         min-width: 24rem;
     }

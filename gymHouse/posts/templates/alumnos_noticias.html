@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_alumnos_noticias2.css' %}">
 
     <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
-    <title>Gym House</title>
+    <title>House Gym</title>
 </head>
 <body> 
     
@@ -186,28 +186,24 @@
 
 
     <section class="news">
-
-        <div class="news_wrapper">
-            
-            <div class="cards">
-                {% for card in noticias_slider %}
-            
-                    <a class="card" href="{% url 'posts:detail_noticia' card.id %}">
-                        <figure>
-                            <img src="{{card.foto.url}}" alt="{{card.titulo}}">
-                        </figure>
-                        <div class="post__images_detail">
-                            <p>{{card.titulo}}</p>
-                        </div>
-                    </a>
-            
-                {% endfor %}
-            </div>
+        <div class="cards">
+            {% for card in noticias_slider %}
+        
+                <a class="card" href="{% url 'posts:detail_noticia' card.id %}">
+                    <figure>
+                        <img src="{{card.foto.url}}" alt="{{card.titulo}}">
+                    </figure>
+                    <div class="post__images_detail">
+                        <p>{{card.titulo}}</p>
+                    </div>
+                </a>
+        
+            {% endfor %}
         </div>
         <div class="fill-mediaquery"></div>
     </section>
     
-    <script src="{% static 'js/sectionNews.js' %}"></script>
+    
     <script src="{% static 'js/modalPerfil.js' %}"></script>
     <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
     <script src="{% static 'js/modalPerfilResponsive.js' %}"></script>

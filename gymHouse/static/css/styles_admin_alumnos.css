@@ -94,6 +94,19 @@ body{
 }
 
 
+.gmail_invalid
+{
+    margin: .3rem 0;
+    color: red;
+    font-family: "raleway bold";
+    font-size: 1.2rem;
+    display: none;
+    margin-left: 1rem;
+}
+.gmail_invalid.active
+{
+    display: block;
+}
 /*Cards de los alumnos-----------------------------------------------------*/
 
 .form_delete_user{
@@ -168,6 +181,8 @@ body{
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
+
 .card-info{
     width: 20vw;
     position: relative;
@@ -183,7 +198,10 @@ body{
     display: flex;
     flex-direction: column;
 }
-
+.card-info > a{
+    text-decoration: none;
+    color: black;
+}
 /*imagen de perfil (Card)----------*/
 .card-info figure{
     width: fit-content;

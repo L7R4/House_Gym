@@ -221,17 +221,17 @@
                         </div>
                     </a>
                     <div class="ejercicios">
-                        <a href="#">
+                        <a href="{% url 'entrenamiento:ejercicios' %}">
                             <h1>Brazos</h1>
                             <img src="{% static 'images/gym/brazos.png' %}">
                             <p>saber más</p>
                         </a>
-                        <a href="#">
+                        <a href="{% url 'entrenamiento:ejercicios' %}">
                             <h1>Abdominales</h1>                           
                             <img src="{% static 'images/gym/abdominales.png' %}">
                             <p>saber más</p>
                         </a>
-                        <a href="#">
+                        <a href="{% url 'entrenamiento:ejercicios' %}">
                             <h1>Elongacion</h1>
                             <img src="{% static 'images/gym/calentamiento.png' %}">
                             <p>saber más</p>
@@ -241,12 +241,12 @@
                             <img src="{% static 'images/gym/gluteos.png' %}">
                             <p>saber más</p>
                         </a>
-                        <a href="#">
+                        <a href="{% url 'entrenamiento:ejercicios' %}">
                             <h1>Piernas</h1>
                             <img src="{% static 'images/gym/piernas.png' %}">
                             <p>saber más</p>
                         </a>
-                        <a href="#">
+                        <a href="{% url 'entrenamiento:ejercicios' %}">
                             <h1>Espalda</h1>
                             <img src="{% static 'images/gym/espalda.png' %}">
                             <p>saber más</p>
@@ -289,7 +289,7 @@
                             {% csrf_token %}
                             <input type="text" name= "link_playlist" placeholder="Pegá el link de tu playlist acá...">
                             <button><p>✓</p></button><!-- que salga un aviso de enviado al apretar el boton -->
-                            <h1>{{form_valid}}</h1>
+                            {% comment %} <h1>{{form_valid}}</h1> {% endcomment %}
                         </form>
                     </div> 
                 </div>

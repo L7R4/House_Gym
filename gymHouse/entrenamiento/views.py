@@ -36,8 +36,6 @@ class EjerciciosAdmin(generic.View):
 
 
     def post(self, request, *args, **kwargs):
-        button_submit = request.POST
-
         if 'button_submit' in request.POST:
             print("Entro al rutinas")
             ejercicios = request.POST.getlist("ejercicios")
@@ -59,11 +57,21 @@ class EjerciciosAdmin(generic.View):
             tipo = request.POST.get("nombre_tipo")
             nombre = request.POST.get("nombre")
             pasos = request.POST.get("pasos")
-            archivo = request.POST.get("archivo")
+            archivo = request.FILES["archivo"]
+            print(archivo)
             new_ejercicio = Ejercicio(nombre_tipo=tipo,nombre=nombre,pasos=pasos,archivo=archivo)
             new_ejercicio.save()
             return redirect("entrenamiento:ejerciciosAdmin")
 
+
+        elif 'confirm_delete_ejer' in request.POST:
+            print("entro en el borrar ejercicio")
+            ejercicio_picked  = int(request.POST.get('eje'))
+            ejercicio = Ejercicio.objects.get(pk=ejercicio_picked)
+            ejercicio.delete()
+            return redirect('entrenamiento:ejerciciosAdmin')
+        else:
+            return redirect('entrenamiento:ejerciciosAdmin')
 
 class HistorialRutina(generic.View):
     model= Rutina

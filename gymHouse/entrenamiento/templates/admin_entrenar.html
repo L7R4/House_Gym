@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
         <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles_admin_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
 
         <link rel="stylesheet" href="{% static 'css/styles_admin_entrenar-agregar.css' %}" />
         <link rel="stylesheet" href="{% static 'css/styles_admin_entrenar.css' %}" />
@@ -84,11 +84,11 @@
                     </a>
                     <div class="indicator"></div>
                 </li>
-                <li class="list" id="perfil">
-                    <a href="admin_perfil.html">
+                <li class="list perfil_nav" id="perfil">
+                    <div class="perfil">
                         <span class="icono"><img src="/static/images/user.png"> </span>
                         <span class="text">Perfil</span>
-                    </a>
+                    </div>
                     <div class="indicator"></div>
                 </li>
                 <li class="list" id="entrenar">
@@ -112,16 +112,15 @@
                     </a>
                     <div class="indicator"></div>
                 </li>
-                <li class="list">
+                <li class="list" id="alumnos">
                     <a href="{% url 'personas:adminAlumnos' %}">
                         <span class="icono"><img src="{% static 'images/users-alt.png' %}"></span>
                         <span class="text">Alumnos</span>
                     </a>
                     <div class="indicator"></div>
                 </li>
-                
             </ul>
-        </div>
+        </div>  
 
 
         {% comment %} PERFIL MODAL {% endcomment %}
@@ -216,15 +215,34 @@
                     <div class="plegable">
                         {% for a in abdominales %}
                                 <div class="ejercicio">
-                                    <input type="checkbox" id = "brazo{{forloop.counter}}" value="{{a.pk}}" name="ejercicios">
-                                    
-                                    <label for="brazo{{forloop.counter}}">
-                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                        <div class="imgejercicio">
-                                            <img src="{% static '/images/gym/workout.png' %}">
+                                    <div class = "ejer_container">
+                                        <input type="checkbox" id = "abdominales{{forloop.counter}}" value="{{a.pk}}" name="ejercicios">
+                                        <label for="abdominales{{forloop.counter}}">
+                                            <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                            <div class="imgejercicio">
+                                                <img src="{% static '/images/gym/workout.png' %}">
+                                            </div>
+                                            <p>{{a}}</p>
+                                        </label>
+                                    </div>
+                                    <form method="POST" class="modificar_ejer">
+                                        {% csrf_token %}
+                                        <a href="">
+                                            <img src="" alt="">
+                                        </a>
+                                        <div class="button_delete_wrapper">
+                                            <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                            <input type="hidden" value="{{a.pk}}" name="eje">
                                         </div>
-                                        <p>{{a}}</p>
-                                    </label>
+                                        <div class="confirm_delete_container">
+                                            <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                            <div class="confirm_buttons">
+                                                <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                                <button type="button" class="confirm_negative">No</button>
+                                            </div>
+                                            
+                                        </div>
+                                    </form>
                                 </div>
                         {% endfor %}
                         
@@ -241,15 +259,34 @@
                     <div class="plegable">
                         {% for b in brazos %}
                                 <div class="ejercicio">
-                                    <input type="checkbox" id = "abdomen{{forloop.counter}}" value="{{b.pk}}" name="ejercicios">
-                                    
-                                    <label for="abdomen{{forloop.counter}}">
-                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                        <div class="imgejercicio">
-                                            <img src="{% static '/images/gym/workout.png' %}">
+                                    <div class = "ejer_container"> 
+                                        <input type="checkbox" id = "abdomen{{forloop.counter}}" value="{{b.pk}}" name="ejercicios">
+                                        <label for="abdomen{{forloop.counter}}">
+                                            <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                            <div class="imgejercicio">
+                                                <img src="{% static '/images/gym/workout.png' %}">
+                                            </div>
+                                            <p>{{b}}</p>
+                                        </label>
+                                    </div>
+                                    <form method="POST" class="modificar_ejer">
+                                        {% csrf_token %}
+                                        <a href="">
+                                            <img src="" alt="">
+                                        </a>
+                                        <div class="button_delete_wrapper">
+                                            <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                            <input type="hidden" value="{{b.pk}}" name="eje">
                                         </div>
-                                        <p>{{b}}</p>
-                                    </label>
+                                        <div class="confirm_delete_container">
+                                            <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                            <div class="confirm_buttons">
+                                                <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                                <button type="button" class="confirm_negative">No</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
                                 </div>
                         {% endfor %}
                         
@@ -266,15 +303,34 @@
 
                         {% for c in espalda %}
                             <div class="ejercicio">
-                                <input type="checkbox" id = "espalda{{forloop.counter}}" value="{{c.pk}}" name="ejercicios">
-                                
-                                <label for="espalda{{forloop.counter}}">
-                                    <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                    <div class="imgejercicio">
-                                        <img src="{% static '/images/gym/workout.png' %}">
+                                <div class = "ejer_container"> 
+                                    <input type="checkbox" id = "espalda{{forloop.counter}}" value="{{c.pk}}" name="ejercicios">
+                                    
+                                    <label for="espalda{{forloop.counter}}">
+                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                        <div class="imgejercicio">
+                                            <img src="{% static '/images/gym/workout.png' %}">
+                                        </div>
+                                        <p>{{c}}</p>
+                                    </label>
+                                </div>
+                                <form method="POST" class="modificar_ejer">
+                                    {% csrf_token %}
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+                                    <div class="button_delete_wrapper">
+                                        <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                        <input type="hidden" value="{{c.pk}}" name="eje">
                                     </div>
-                                    <p>{{c}}</p>
-                                </label>
+                                    <div class="confirm_delete_container">
+                                        <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                        <div class="confirm_buttons">
+                                            <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                            <button type="button" class="confirm_negative">No</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
 
@@ -290,15 +346,34 @@
                     <div class="plegable">
                         {% for p in piernas %}
                             <div class="ejercicio">
-                                <input type="checkbox" id = "pierna{{forloop.counter}}" value="{{p.pk}}" name="ejercicios">
-                                
-                                <label for="pierna{{forloop.counter}}">
-                                    <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                    <div class="imgejercicio">
-                                        <img src="{% static '/images/gym/workout.png' %}">
+                                <div class = "ejer_container"> 
+                                    <input type="checkbox" id = "pierna{{forloop.counter}}" value="{{p.pk}}" name="ejercicios">
+                                    
+                                    <label for="pierna{{forloop.counter}}">
+                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                        <div class="imgejercicio">
+                                            <img src="{% static '/images/gym/workout.png' %}">
+                                        </div>
+                                        <p>{{p}}</p>
+                                    </label>
+                                </div>
+                                <form method="POST" class="modificar_ejer">
+                                    {% csrf_token %}
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+                                    <div class="button_delete_wrapper">
+                                        <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                        <input type="hidden" value="{{p.pk}}" name="eje">
                                     </div>
-                                    <p>{{p}}</p>
-                                </label>
+                                    <div class="confirm_delete_container">
+                                        <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                        <div class="confirm_buttons">
+                                            <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                            <button type="button" class="confirm_negative">No</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                         
@@ -314,15 +389,34 @@
                     <div class="plegable">
                         {% for g in gluteos %}
                             <div class="ejercicio">
-                                <input type="checkbox" id = "gluteo{{forloop.counter}}" value="{{g.pk}}" name="ejercicios">
-                                
-                                <label for="gluteo{{forloop.counter}}">
-                                    <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                    <div class="imgejercicio">
-                                        <img src="{% static '/images/gym/workout.png' %}">
+                                <div class = "ejer_container"> 
+                                    <input type="checkbox" id = "gluteo{{forloop.counter}}" value="{{g.pk}}" name="ejercicios">
+                                    
+                                    <label for="gluteo{{forloop.counter}}">
+                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                        <div class="imgejercicio">
+                                            <img src="{% static '/images/gym/workout.png' %}">
+                                        </div>
+                                        <p>{{g}}</p>
+                                    </label>
+                                </div>
+                                <form method="POST" class="modificar_ejer">
+                                    {% csrf_token %}
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+                                    <div class="button_delete_wrapper">
+                                        <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                        <input type="hidden" value="{{g.pk}}" name="eje">
                                     </div>
-                                    <p>{{g}}</p>
-                                </label>
+                                    <div class="confirm_delete_container">
+                                        <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                        <div class="confirm_buttons">
+                                            <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                            <button type="button" class="confirm_negative">No</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                        
@@ -338,15 +432,34 @@
                     <div class="plegable">
                         {% for e in elongacion %}
                             <div class="ejercicio">
-                                <input type="checkbox" id = "elon{{forloop.counter}}" value="{{e.pk}}" name="ejercicios">
-                                
-                                <label for="elon{{forloop.counter}}">
-                                    <button type="button" class="ejercicio__buttonQuitar">-</button>
-                                    <div class="imgejercicio">
-                                        <img src="{% static '/images/gym/workout.png' %}">
+                                <div class = "ejer_container">
+                                    <input type="checkbox" id = "elon{{forloop.counter}}" value="{{e.pk}}" name="ejercicios">
+                                    
+                                    <label for="elon{{forloop.counter}}">
+                                        <button type="button" class="ejercicio__buttonQuitar">-</button>
+                                        <div class="imgejercicio">
+                                            <img src="{% static '/images/gym/workout.png' %}">
+                                        </div>
+                                        <p>{{e}}</p>
+                                    </label>
+                                </div>
+                                <form method="POST" class="modificar_ejer">
+                                    {% csrf_token %}
+                                    <a href="">
+                                        <img src="" alt="">
+                                    </a>
+                                    <div class="button_delete_wrapper">
+                                        <button class="button_delete" type="button"><img src="{% static 'images/gym/tachito.png' %}" alt=""></button>
+                                        <input type="hidden" value="{{e.pk}}" name="eje">
                                     </div>
-                                    <p>{{e}}</p>
-                                </label>
+                                    <div class="confirm_delete_container">
+                                        <label for="confirm_delete">¿Quieres eliminar este ejercicio?</label>
+                                        <div class="confirm_buttons">
+                                            <input type="submit" value= "Si" name="confirm_delete_ejer">
+                                            <button type="button" class="confirm_negative">No</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         {% endfor %}
                         
@@ -369,17 +482,18 @@
             <div class="screen-ejercicio" id="divcerrado">
                 <div class="fecha">
                     <h1>Creá la rutina</h1>
-                    <input type="date" name="fecha" min="2022-10-12" max="2025-12-31" form="form_ejercicios" />
+                    <input type="date" name="fecha" min="2022-10-12" max="2025-12-31" form="form_ejercicios" required/>
                 </div>
                 <div class="ejercicio-pasos">
                     <form method="POST" class="form_ejercicios" id="form_ejercicios">
                         {% csrf_token %}
-                        
-                        <input type="submit" value="Guardar" name="button_submit">
+                     
+                        <input type="submit" value="Guardar" name="button_submit" id="button_submit_agregar_rutina">
                         <select class="selecciongenero" name="genero" id="id_genero">
                             <option value="hombre" selected>Hombre</option>
                             <option value="mujer">Mujer</option>
                         </select>
+
                     </form>
                 </div>
                 <div class="ejercicio-video">
@@ -391,20 +505,20 @@
 
         <div class="pop-up">
             <div class="pop-up-wrap">
-                <form action="" method="POST" class="nuevoejercicio" id="nuevoejercicio">
+                <form action="" method="POST" class="nuevoejercicio" id="nuevoejercicio" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="agregarejercicio">
                         <div class="ejercicio-nombre">
                             <div class="ejercicio-nombre-c1">
                                 <p>Nombre del ejercicio</p>
-                                <input type="text" name="nombre" placeholder="Ingresar nombre...">
+                                <input type="text" name="nombre" placeholder="Ingresar nombre..."required>
                             </div>
                         </div>
 
                         <h1>PASOS</h1>
 
                         <div class="ejercicio-pasos">
-                            <textarea name="pasos" rows="10" cols="50" form="nuevoejercicio" placeholder="Escribe aquí los pasos..."></textarea>                 
+                            <textarea name="pasos" rows="10" cols="50" form="nuevoejercicio" placeholder="Escribe aquí los pasos..."required></textarea>                 
                         </div>
 
                         <div class="agregarvideo">
@@ -426,7 +540,7 @@
 
                         <h1>Elija el tipo de ejercicio...</h1>
                         <div class="opciones">
-                            <input type="radio" name="nombre_tipo" id="brazos_type" value="brazos" />
+                            <input type="radio" name="nombre_tipo" id="brazos_type" value="brazos" required/>
                             <label for="brazos_type" class="tipos-ejercicios" >
                                 <p>Brazos</p>
                             </label>
@@ -441,7 +555,7 @@
                                 <p>Espalda</p>
                             </label>
                             
-                            <input type="radio" name="nombre_tipo" id="abdomen_type" value="abdomen"/>
+                            <input type="radio" name="nombre_tipo" id="abdomen_type" value="abdominales"/>
                             <label class="tipos-ejercicios" for="abdomen_type">
                                 <p>Abdomen</p>
                             </label>
@@ -483,6 +597,8 @@
     
     <script src="{% static 'js/agregarejercicios.js' %}"></script>
     <script src="{% static 'js/quechupeee.js' %}"></script>
+    <script src="{% static 'js/deleteEjercicio.js' %}"></script>
     <script src="{% static 'js/modalPerfil.js' %}"></script>
+    <script src="{% static 'js/modalPerfilResponsive.js' %}"></script>
     <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
 </html>

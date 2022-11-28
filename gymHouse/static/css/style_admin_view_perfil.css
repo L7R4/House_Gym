@@ -1,0 +1,14 @@
+.perfilfoto-image
+{
+    display: none;
+}
+
+.perfilfoto-label
+{
+    display: none;
+}
+
+.biografia > textarea::placeholder
+{
+    color: transparent;
+}

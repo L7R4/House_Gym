@@ -7,6 +7,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.forms import formset_factory
+from django.http import HttpResponse
+
+import json
 
 class Turnos(generic.ListView):
     model = Turno
@@ -89,6 +92,7 @@ class AdminTurnos(generic.View):
             try:
                 data = {}
                 data['persona'] = persona.nombre + " " + persona.apellido
+                data['persona_pk'] = persona.id
                 cant_semana = persona.turno_set.all()[0]
                 turno = list(cant_semana.dias.all())
                 
@@ -172,67 +176,27 @@ class AdminTurnos(generic.View):
 class AdminAlumnos(generic.View):
     model = Persona
     template_name = "admin_alumnos.html"
-
-    def get(self,request,*args,**kwargs):
-        personas = Persona.objects.filter(rango="alumno")
-        return render(request, self.template_name,{
-            'personas': personas
-        })
-
-    def post(self,request,*args,**kwargs):
-        button = request.POST
-        if "add_alumno" in button:
-            personas = Persona.objects.filter(rango="alumno")
-            nombre = request.POST.get("nombre")
-            apellido = request.POST.get("apellido")
-            email = request.POST.get("email")
-            edad = request.POST.get("edad")
-            contraseña = request.POST.get("pass")
-
-            new_user= self.model.objects.create_user(
-                email=email,
-                nombre=nombre,
-                apellido=apellido,
-                edad=edad,
-                username = email,
-                password = contraseña)
-            new_user.rango = "alumno"
-            new_user.save()
-            return redirect("personas:createUserTurno")
-
-        elif "confirm_delete_user" in button:
-            persona_selected = int(request.POST.get("persona"))
-            persona = Persona.objects.get(pk=persona_selected)
-            persona.delete()
-            return redirect("personas:adminAlumnos")
-
-
-class AddTurnoNewUser(generic.View):
-    model = Turno
-    template_name = "admin_select_plan_alumnos.html"
-
-
-    def get(self,request,*args,**kwargs):
-        personas = Persona.objects.filter(rango="alumno")
-        
-        return render(request, self.template_name,{
-            'personas': personas
-        })
-
-    def post(self,request,*args,**kwargs):
-        last_user_created = Persona.objects.all().last()
-        print(last_user_created)
-        plan = request.POST.get("plan")
-        new_plan = Turno(plan=plan)
-        new_plan.save()
-        new_plan.alumno.add(last_user_created)
-        
-        return redirect("personas:addDaysToTurno")
-
-
-class AddDaysToNewTurno(generic.FormView):
-    template_name = "admin_select_days_alumnos.html"
     form_class = formset_factory(DayForm,max_num=5,absolute_max=5)
+    
+    def get(self,request,*args,**kwargs):
+        personas = Persona.objects.filter(rango="alumno")
+        person_list =[]
+        for person in personas:
+            data_person = {}
+            data_person['id'] = person.id
+            data_person['correo'] = person.email
+            person_list.append(data_person)
+        data = json.dumps(person_list)
+
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return HttpResponse(data, 'application/json')
+
+        return render(request, self.template_name,{
+            'personas': personas,
+            'formsetDays': self.formset
+        })
+    
+    
     
     data = {
             'form-TOTAL_FORMS': '5',
@@ -263,62 +227,83 @@ class AddDaysToNewTurno(generic.FormView):
 
     ])
 
-   
-    def post(self, request, *args, **kwargs):
-        last_plan = Turno.objects.all().last()
-        
-        if self.formset.is_valid():
-            form_lunes = request.POST.get("form-0-hora")
-            form_martes = request.POST.get("form-1-hora")
-            form_mier = request.POST.get("form-2-hora")
-            form_jueves = request.POST.get("form-3-hora")
-            form_viernes = request.POST.get("form-4-hora")
+    def post(self,request,*args,**kwargs):
+        button = request.POST
+        if "add_alumno" in button:
+            personas = Persona.objects.filter(rango="alumno")
+            nombre = request.POST.get("nombre")
+            apellido = request.POST.get("apellido")
+            email = request.POST.get("email")
+            edad = request.POST.get("edad")
+            contraseña = request.POST.get("pass")
 
-            data = {
-                    'form-TOTAL_FORMS': '5',
-                    'form-INITIAL_FORMS': '5',
-                    'form-0-dia': 'lunes',
-                    'form-0-hora': form_lunes,
-                    'form-1-dia': 'martes',
-                    'form-1-hora': form_martes,
-                    'form-2-dia': 'miercoles',
-                    'form-2-hora': form_mier,
-                    'form-3-dia': 'jueves',
-                    'form-3-hora': form_jueves,
-                    'form-4-dia': 'viernes',
-                    'form-4-hora': form_viernes }
+            new_user= self.model.objects.create_user(
+                email=email,
+                nombre=nombre,
+                apellido=apellido,
+                edad=edad,
+                username = email,
+                password = contraseña)
+            new_user.rango = "alumno"
+            new_user.save()
             
-            formset = self.form_class(data,initial=[
-                        {'dia': "lunes",
-                        'hora':form_lunes},
-                        {'dia': "martes",
-                        'hora':form_martes},
-                        {'dia': "miercoles",
-                        'hora':form_mier},
-                        {'dia': "jueves",
-                        'hora':form_jueves},
-                        {'dia': "viernes",
-                        'hora':form_viernes},
+            plan = request.POST.get("plan")
+            new_plan = Turno(plan=plan)
+            new_plan.save()
+            new_plan.alumno.add(new_user)
 
-                    ])
             
-            for f in formset:
-                print(f)
-                if f.cleaned_data["hora"] == 0:
-                    continue
-                dia  = f.save()
-                last_plan.dias.add(dia) 
-        return redirect("personas:adminAlumnos")
+            if self.formset.is_valid():
+                form_lunes = request.POST.get("form-0-hora")
+                form_martes = request.POST.get("form-1-hora")
+                form_mier = request.POST.get("form-2-hora")
+                form_jueves = request.POST.get("form-3-hora")
+                form_viernes = request.POST.get("form-4-hora")
 
+                data = {
+                        'form-TOTAL_FORMS': '5',
+                        'form-INITIAL_FORMS': '5',
+                        'form-0-dia': 'lunes',
+                        'form-0-hora': form_lunes,
+                        'form-1-dia': 'martes',
+                        'form-1-hora': form_martes,
+                        'form-2-dia': 'miercoles',
+                        'form-2-hora': form_mier,
+                        'form-3-dia': 'jueves',
+                        'form-3-hora': form_jueves,
+                        'form-4-dia': 'viernes',
+                        'form-4-hora': form_viernes }
+                
+                formset = self.form_class(data,initial=[
+                            {'dia': "lunes",
+                            'hora':form_lunes},
+                            {'dia': "martes",
+                            'hora':form_martes},
+                            {'dia': "miercoles",
+                            'hora':form_mier},
+                            {'dia': "jueves",
+                            'hora':form_jueves},
+                            {'dia': "viernes",
+                            'hora':form_viernes},
 
+                        ])
+                
+                for f in formset:
+                    print(f)
+                    if f.cleaned_data["hora"] == 0:
+                        continue
+                    dia  = f.save()
+                    new_plan.dias.add(dia) 
+                return redirect("personas:adminAlumnos")
+            else:
+                print(formset)
+                return redirect("personas:adminAlumnos")
 
-    def get(self,request,*args,**kwargs):
-        personas = Persona.objects.filter(rango="alumno")
-        
-        return render(request, self.template_name,{
-            'personas': personas,
-            'formsetDays': self.formset
-        })
+        elif "confirm_delete_user" in button:
+            persona_selected = int(request.POST.get("persona"))
+            persona = Persona.objects.get(pk=persona_selected)
+            persona.delete()
+            return redirect("personas:adminAlumnos")
 
 
 class ViewEditPerfil(generic.View):
@@ -385,6 +370,15 @@ class UpdatePassword(generic.FormView):
             'form' : self.get_form,
             'error': form.errors,
         })
-        
+
+
+class ViewDetailUserFromAlumnos(generic.DetailView):
+    model = Persona
+    template_name = 'view_user.html'
+
+
+class ViewDetailUserFromTurnos(generic.DetailView):
+    model = Persona
+    template_name = 'view_user_from_turnos.html'
         
         

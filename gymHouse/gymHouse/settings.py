@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i+r2ci*uc#xrcpks2tirf$(2vmxc+*!4@ttf*hnlan^zxe_!+d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.103']
 
 
 # Application definition
@@ -125,19 +125,14 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL =  '/public/'
-MEDIA_ROOT = BASE_DIR / "gymHouse/media/"
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+print(BASE_DIR)
 
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
-# STATIC_ROOT = '/static/'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

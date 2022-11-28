@@ -7,7 +7,7 @@
         <meta name="header" content="" />       
         <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
         <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles_admin_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
 
         <link rel="stylesheet" href="{% static 'css/styles_admin_landing.css' %}" /> {% comment %}  LANDING DE ADMIN{% endcomment %}
         <link rel="stylesheet" href="{% static 'css/styles_admin-cambiarplanes.css' %}" /> {% comment %}  MODAL CAMBIAR PLANES{% endcomment %}
@@ -82,11 +82,11 @@
                     </a>
                     <div class="indicator"></div>
                 </li>
-                <li class="list" id="perfil">
-                    <a href="admin_perfil.html">
+                <li class="list perfil_nav" id="perfil">
+                    <div class="perfil">
                         <span class="icono"><img src="/static/images/user.png"> </span>
                         <span class="text">Perfil</span>
-                    </a>
+                    </div>
                     <div class="indicator"></div>
                 </li>
                 <li class="list" id="entrenar">
@@ -117,7 +117,6 @@
                     </a>
                     <div class="indicator"></div>
                 </li>
-                
             </ul>
         </div>
 
@@ -232,32 +231,32 @@
                             </div>
                         </a>
                         <div class="ejercicios">
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Brazos</h1>
                                 <img src="{% static 'images/gym/brazos.png' %}">
                                 <p>saber más</p>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Abdominales</h1>                           
                                 <img src="{% static 'images/gym/abdominales.png' %}">
                                 <p>saber más</p>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Elongación</h1>
                                 <img src="{% static 'images/gym/calentamiento.png' %}">
                                 <p>saber más</p>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Glúteos</h1>
                                 <img src="{% static 'images/gym/gluteos.png' %}">
                                 <p>saber más</p>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Piernas</h1>
                                 <img src="{% static 'images/gym/piernas.png' %}">
                                 <p>saber más</p>
                             </a>
-                            <a href="#">
+                            <a href="{% url 'entrenamiento:ejerciciosAdmin' %}">
                                 <h1>Espalda</h1>
                                 <img src="{% static 'images/gym/espalda.png' %}">
                                 <p>saber más</p>
@@ -279,7 +278,7 @@
                     <form class="landing-encuesta" method="POST">
                         {% csrf_token %}
                         <p>¿Querés cambiar la encuesta?</p>
-                        <input type="text" name="poll">
+                        <input type="text" name="poll" required>
                         <button type ="submit" name="submit_update_poll">Cambiar</button>
                     </form>
                 </div>
@@ -302,17 +301,17 @@
         
                             <p>Seleccioná el plan correspondiente</p>
                             <ul>
-                                <input type="radio" name="plan" id="dos_dias" value="2 días/semana">
+                                <input type="radio" name="plan" id="dos_dias" value="2 días/semana" class="plan_mensual">
                                 <label class="pop-up--plan" for="dos_dias" >
                                     <p>2 días/semana</p>
                                 </label>
                                 
-                                <input type="radio" name="plan" id="tres_dias" value="3 días/semana">
+                                <input type="radio" name="plan" id="tres_dias" value="3 días/semana" class="plan_mensual">
                                 <label class="pop-up--plan" for="tres_dias">
                                     <p>3 días/semana</p>
                                 </label>
 
-                                <input type="radio" name="plan" id="cinco_dias" value="5 días/semana">
+                                <input type="radio" name="plan" id="cinco_dias" value="5 días/semana" class="plan_mensual">
                                 <label class="pop-up--plan" for="cinco_dias">
                                     <p>5 días/semana</p>
                                 </label>
@@ -332,7 +331,11 @@
                                         {{f.dia}}
                                         
                                         <div class="custom-num">
-                                            {{f.hora}}
+                                            <div>
+                                                <button type="button" class="disminuir"><</button>
+                                                {{f.hora}}
+                                                <button type="button" class="aumentar">></button>
+                                            </div>
                                             <p class="hs">hs</p>
                                         </div>
                                     </li>
@@ -364,12 +367,16 @@
 
         
         {% comment %} SCRIPTS {% endcomment %}
-        <script src="{% static 'js/model_admin.js' %}"></script>
+        {% comment %} <script src="{% static 'js/model_admin.js' %}"></script> {% endcomment %}
         <script src="{% static 'js/modalchangePlanAdmin.js' %}"></script>
         <script src="{% static 'js/agregar_dias.js' %}"></script>
+        <script src="{% static 'js/validar_dias_select.js' %}"></script>
+
 
         <script src="{% static 'js/modalPerfil.js' %}"></script>
+        <script src="{% static 'js/modalPerfilResponsive.js' %}"></script>
         <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
+        <script src="{% static 'js/hour_controller.js' %}"></script>
 
     </body>
 </html>

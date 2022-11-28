@@ -7,59 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles_navcel.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles_editperfil.css' %}">
-    <!--<script src="{% static 'js/sectionProfile.js' %}"></script>-->
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_admin_view_perfil.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
+    <title>Gym House</title>
 </head>
 <body>
 
     <form method="POST" id="eprofile" class="fondoperfil" enctype="multipart/form-data">
         {% csrf_token %}
         
-        <a href ="{% if user.rango == 'profe' %} {% url 'login_profe' %}{% else %}{% url 'login_user' %}{% endif %}" class="button-back">
+        <a href ="{% url 'personas:adminAlumnos'  %}" class="button-back">
             <img src="{% static 'images/turn-back.png' %}"> 
         </a> 
 
         <div class="o">
             <div class="o1">
                 <div class="perfilfoto" id="eprofile_data--radiuspic">
-                    <img src="{% if user.foto_de_perfil %} {{user.foto_de_perfil.url}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" id="eprofile_data--pic">
+                    <img src="{% if object.foto_de_perfil %} {{object.foto_de_perfil.url}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" id="eprofile_data--pic">
                     <label for="eprofile_data--button-image" class="perfilfoto-label">
                         Cambiar imagen
                     </label>
-                    <input type="file" name="foto_de_perfil" id="eprofile_data--button-image" class="perfilfoto-image" value="{% if user.foto_de_perfil %} {{user.foto_de_perfil.url}} {% endif %}">
+                    <input type="file" name="foto_de_perfil" id="eprofile_data--button-image" class="perfilfoto-image" value="{% if object.foto_de_perfil %} {{object.foto_de_perfil.url}} {% endif %}" readonly>
                 </div>
                 {% comment %} <input type="image" id="eprofile_data--button-image" class="perfilfoto-image" >  {% endcomment %}
 
                 <div class="biografia" id="eprofile_data--description">
                     <h3>Biografía</h3>
                     {% comment %} {{form.biografia}} {% endcomment %}
-                    <textarea form="eprofile"  name="biografia" maxlength="300" placeholder="Cuentanos un poco acerta de ti!">{% if user.biografia != None %}{{user.biografia}}{% endif %}</textarea>
+                    <textarea form="eprofile"  name="biografia" maxlength="300" placeholder="Cuentanos un poco acerta de ti!" readonly>{% if object.biografia != None %}{{object.biografia}}{% endif %}</textarea>
                 </div>
             </div>
 
             <div class="o2">
                 <div class="nickname">
                     <div class="inputgroup">
-                        <input  type="text" name="apodo" autocomplete="off" class="inputt" value="{% if user.apodo != None %}{{user.apodo}}{% endif %}">
+                        <input  type="text" name="apodo" autocomplete="off" class="inputt" value="{% if object.apodo != None %}{{object.apodo}}{% endif %}" readonly>
                         <label class="userlabel">Apodo</label>
                     </div>
                 </div>
                         
                 <div class="name" id="eprofile_data--name">
                     <div class="inputgroup">
-                        <input required name="nombre" value="{% if user.nombre != None %}{{user.nombre}}{% endif %}"  type="text"  autocomplete="off" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32)" class="inputt">
+                        <input required name="nombre" value="{% if object.nombre != None %}{{object.nombre}}{% endif %}"  type="text"  autocomplete="off" class="inputt" readonly>
                         <label class="userlabel">Nombre(s)</label>
                     </div>
                     <div class="inputgroup">
-                        <input required value="{% if user.apellido != None %}{{user.apellido}}{% endif %}"type="text" name="apellido" autocomplete="off" class="inputt" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32)">
+                        <input required value="{% if object.apellido != None %}{{object.apellido}}{% endif %}"type="text" name="apellido" autocomplete="off" class="inputt" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32)" readonly>
                         <label class="userlabel">Apellido(s)</label>
                     </div>
                     <div class="inputgroup" id="input-group--tel">
-                        <input name="telefono" value="{% if user.telefono != None %}{{user.telefono}}{% endif %}"type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" autocomplete="off" class="inputt">
+                        <input name="telefono" value="{% if object.telefono != None %}{{object.telefono}}{% endif %}"type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" autocomplete="off" class="inputt" readonly>
                         <label class="userlabel">Telefono</label>
                     </div>
                     <div class="inputgroup" id="input-group--email">
-                        <input value="{% if user.email != None %}{{user.email}}{% endif %}" type="email" name="email" autocomplete="off" class="inputt">
+                        <input value="{% if object.email != None %}{{object.email}}{% endif %}" type="email" name="email" autocomplete="off" class="inputt" readonly>
                         <label class="userlabel">Correo electronico</label>
                     </div>
                 </div>
@@ -67,21 +69,21 @@
                 <div class="gender" id="eprofile_data--gender">
                     <div class="genderdiv">
 
-                        <input type="radio" name="genero" id="man" value="hombre" {% if user.genero == "hombre" %}checked{% endif %}>
+                        <input type="radio" name="genero" id="man" value="hombre" {% if object.genero == "hombre" %}checked{% endif %} readonly disabled>
                         <label for="man">
                             <p>Hombre</p>
                             <figure id="gender_man"> <img src="{% static 'images/male.png' %}" alt=""></figure>
                         </label>
                         
 
-                        <input type="radio" name="genero" id="woman" value="mujer" {% if user.genero == "mujer" %}checked{% endif %}>
+                        <input type="radio" name="genero" id="woman" value="mujer" {% if object.genero == "mujer" %}checked{% endif %} readonly disabled>
                         <label for="woman">
                             <p>Mujer</p>
                             <figure id="gender_woman"><img src="{% static 'images/female.png' %}" alt=""></figure>
                         </label>
                         
 
-                        <input type="radio" name="genero" id="other" value="otro" {% if user.genero == "otro" %}checked{% endif %}> 
+                        <input type="radio" name="genero" id="other" value="otro" {% if object.genero == "otro" %}checked{% endif %} readonly disabled> 
                         <label for="other">
                             <p>Otro</p>
                             <figure id="gender_other"><img src="{% static 'images/non-binary.png' %}" alt=""></figure>
@@ -90,34 +92,34 @@
 
                     </div>     
                 </div>
+                <div class="inputgroup playlist_group" >
+                    <input value="{% if object.link_playlist != None %}{{object.link_playlist}}{% endif %}" type="text" autocomplete="off" class="inputt" readonly> 
+                    <label class="userlabel">Playlist</label>
+                </div>
             </div>
 
             <div class="o3">
                 <div class="numbers" id="eprofile_data--numbers">
                     <div class="inputgroup">
-                        <input value="{% if user.altura != None %}{{user.altura}}{% endif %}" type="tel" min="0" name="altura" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" class="inputt" maxlength="3">
+                        <input value="{% if object.altura != None %}{{object.altura}}{% endif %}" type="tel" min="0" name="altura" autocomplete="off" class="inputt" maxlength="3" readonly>
                         <label class="userlabel">Altura</label>
                     </div>
                     <div class="inputgroup">
-                        <input value="{% if user.peso != None %}{{user.peso}}{% endif %}" type="tel" min="0" name="peso" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" class="inputt" maxlength="3">
+                        <input value="{% if object.peso != None %}{{object.peso}}{% endif %}" type="tel" min="0" name="peso" autocomplete="off" class="inputt" maxlength="3" readonly>
                         <label class="userlabel">Peso</label>
                     </div>
                     <div class="inputgroup">
-                        <input value="{% if user.edad != None %}{{user.edad}}{% endif %}" type="tel" min="0" name="edad" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" class="inputt" maxlength="3"> 
+                        <input value="{% if object.edad != None %}{{object.edad}}{% endif %}" type="tel" min="0" name="edad" autocomplete="off" class="inputt" maxlength="3" readonly> 
                         <label class="userlabel">Edad</label>
                     </div>
+                   
                 </div>
-
-                <a href ="{% url 'personas:change_pass' %}" id="eprofile_data--button-update" class="button-update">
-                    <p>CAMBIAR CONTRASEÑA</p> 
-                </a> 
+ 
             </div>
         </div>
         
-        <button id="button-save" class="button-save" type="submit">
-            <p>GUARDAR</p> 
-        </button>
     </form>
+
     <script src="{% static 'js/inputs_validate_perfil.js' %}"></script>
 </body>
 </html>

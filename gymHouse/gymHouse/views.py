@@ -59,7 +59,7 @@ class IndexAlumno(generic.View):
             dias_plan = None
         # print(request.user.rango)
         return render(request, self.template_name, {
-        "posts": Noticia.objects.all()[:3],
+        "posts": Noticia.objects.all().order_by('id')[:3],
         "plan": plan,
         "dias":dias_plan,
         'encuesta': FormularioIndex.objects.all().last()
@@ -85,13 +85,13 @@ class IndexAlumno(generic.View):
                 "posts": Noticia.objects.all()[:3],
                 "plan": plan,
                 "dias":dias_plan,
-                'encuesta': FormularioIndex.objects.get(pk=1)
+                'encuesta': FormularioIndex.objects.all().last()
             })
         return render(request, self.template_name,{
             "posts": Noticia.objects.all()[:3],
             "plan": plan,
             "dias":dias_plan,
-            'encuesta': FormularioIndex.objects.get(pk=1)
+            'encuesta': FormularioIndex.objects.all().last()
         })
         
 
@@ -133,7 +133,7 @@ class IndexProfe(generic.View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {
-        "posts": Noticia.objects.all()[:3],
+        "posts": Noticia.objects.all().order_by('-id')[:3],
         "alumnos": Persona.objects.filter(rango="alumno"),
         'formsetDays': self.formset
     })
@@ -204,12 +204,18 @@ class IndexProfe(generic.View):
 
             return redirect("login_profe")
         elif "submit_update_poll" in request.POST:
-            new_poll = FormularioIndex()
-            poll_incoming = request.POST.get("poll")
-            old_poll = FormularioIndex.objects.all().last()
-            old_poll.delete()
-            new_poll.link = poll_incoming
-            new_poll.save()
+            try:
+                new_poll = FormularioIndex()
+                poll_incoming = request.POST.get("poll")
+                old_poll = FormularioIndex.objects.all().last()
+                old_poll.delete()
+                new_poll.link = poll_incoming
+                new_poll.save()
+            except AttributeError:
+                new_poll = FormularioIndex()
+                poll_incoming = request.POST.get("poll")
+                new_poll.link = poll_incoming
+                new_poll.save()
 
 
             return redirect("login_profe")

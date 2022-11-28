@@ -101,6 +101,13 @@
     flex-direction: column;
     padding: 2rem;
 }
+
+.pop-up--data.desactivate
+{
+    display: none;
+}
+
+
 .input-group {
     position: relative;
     margin: 0.5rem;
@@ -144,13 +151,13 @@
 /*Primer cuadrito*/
 .pop-up--first{
     width: 42rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     padding: 2rem;
 }
 .pop-up--first.active
 {
-    display: none;
+    display: flex;
 }
 
 .pop-up--first > p{
@@ -407,7 +414,7 @@ ul{
     margin-top: 1.6rem;
     margin-bottom: 1.3rem;
 }
-#first_secondbutton{
+#first_secondbutton,#close_modal_plan{
     text-align: center;
     text-decoration: none;
     color: #000;
@@ -418,8 +425,9 @@ ul{
     cursor: pointer;
 }
 
-.planmensual--pop-up_wrap #first_button{
+.planmensual--pop-up_wrap #first_button,#data_button{
     text-decoration: none;
+    pointer-events: none;
     font-family: "raleway semibold";
     font-size: 1.4rem;
     color: white;
@@ -432,6 +440,7 @@ ul{
     margin-top: 1.6rem;
     margin-bottom: 1.3rem;
 }
+/* .planmensual--pop-up_wrap #first_button */
 
 .planmensual--pop-up_wrap #second_button
 {
@@ -482,7 +491,6 @@ ul{
 .pop-up--second{
     width: 42rem;
     border-radius: 32px;
-    display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
     padding: 1.5rem;
@@ -497,10 +505,15 @@ ul{
     text-align: center;
 }
 
-.planmensual--pop-upt_turnos_dias > form >.pop-up--second.active
+/* .planmensual--pop-upt_turnos_dias > form >.pop-up--second.active
 {
-    display: none;
+    display: flex;
+} */
+
+.pop-up--second.active{
+    display: flex;
 }
+
 
 .pop-up--second > p{
     font-family: "raleway semibold";
@@ -545,23 +558,29 @@ ul{
     flex-flow: column;
     justify-content: center;
 } */
-.day >.custom-num > input[type="number"]
+/* .day >.custom-num > input[type="number"]
 {
-    /* background-color: red; */
     width: 2rem;
     height: 4rem;
     border: none;
     text-align: center;
     outline: none;
-}
+} */
 
-.day >.custom-num > input[type="number"]::-webkit-inner-spin-button, 
-.day >.custom-num > input[type="number"]::-webkit-outer-spin-button { 
+.day >.custom-num >div>input[type=number] { 
+    /* -moz-appearance:textfield;  */
+    width: 50%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-align: center;
+
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
-
-input[type=number] { -moz-appearance:textfield; }
 
 .day > p{
     font-family: "raleway semibold";
@@ -611,7 +630,7 @@ input[type=number] { -moz-appearance:textfield; }
     background: #ADABFF;
     transition: 1s;
     align-items: center;
-    
+    flex-flow: column;
     justify-content: center;
 }
 .day.select > .custom-num.select >input{
@@ -660,7 +679,7 @@ input[type=number] { -moz-appearance:textfield; }
 .pop-up--third{
     width: 42rem;
     border-radius: 32px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     padding: 2rem 3rem;

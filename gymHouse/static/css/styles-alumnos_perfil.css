@@ -108,7 +108,7 @@
 /*------------------------------------------------------------------------------------------------*/
 .perfil_bg > .profile{
     width: auto;
-    height: 70vh;
+    height: 80vh;
     min-height: 100%;
 }
 
@@ -126,18 +126,20 @@
 /*Profile Picture*/
 .profile_data--radiuspic{
     width: 22rem;
-    min-height: 20rem;
+    height: 14rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
+    
     
 }
 
 .profile_data--radiuspic > .profile_data--pic{
-    width: 100%;
+    width: 70%;
     height: 100%;
     display: flex;
     align-items: flex-start;
+    object-fit: cover;
 }
 
 .profile_data--radiuspic img{
@@ -323,6 +325,11 @@ ol{
         width: 20rem;
         min-height: 18rem;
     }
+
+    .profile_data--radiuspic > .profile_data--pic{
+        width: 100%;
+    }
+
     .profile_data--description
     {
         display: none;

@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_admin_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
     
     <link rel="stylesheet" href="{% static 'css/styles_admin_noticias-noticia.css' %}">
 
@@ -82,11 +82,11 @@
                 </a>
                 <div class="indicator"></div>
             </li>
-            <li class="list" id="perfil">
-                <a href="admin_perfil.html">
+            <li class="list perfil_nav" id="perfil">
+                <div class="perfil">
                     <span class="icono"><img src="/static/images/user.png"> </span>
                     <span class="text">Perfil</span>
-                </a>
+                </div>
                 <div class="indicator"></div>
             </li>
             <li class="list" id="entrenar">
@@ -110,14 +110,13 @@
                 </a>
                 <div class="indicator"></div>
             </li>
-            <li class="list">
+            <li class="list" id="alumnos">
                 <a href="{% url 'personas:adminAlumnos' %}">
                     <span class="icono"><img src="{% static 'images/users-alt.png' %}"></span>
                     <span class="text">Alumnos</span>
                 </a>
                 <div class="indicator"></div>
             </li>
-            
         </ul>
     </div>
 
@@ -243,7 +242,7 @@
 
                             <div class="coments--user">
                                 <div class="coments--userinfo">
-                                    <img src="/public/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
+                                    <img src="/media/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
                                     <h5>{{comment.persona}}</h5>
                                 </div>
                                 <p>{{comment}}</p>
@@ -269,6 +268,7 @@
     {% comment %} SCRIPTS {% endcomment %}
     <script src="{% static 'js/sectionNewsComplete.js' %}"></script>
     <script src="{% static 'js/modalPerfil.js' %}"></script>
+    <script src="{% static 'js/modalPerfilResponsive.js' %}"></script>
     <script src="{% static 'js/menu_admin_NavCel.js' %}"></script>
 
 </body>

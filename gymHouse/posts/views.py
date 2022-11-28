@@ -41,7 +41,6 @@ class DetailNoticia(generic.DetailView):
             
         
 
-
 # SECCIONES DE NOTICIAS DE VISTA ADMIN        
 class AdminNoticias(generic.ListView):
     model = Noticia
@@ -75,9 +74,7 @@ class AdminNoticiaDetail(generic.DetailView):
             persona = request.user
             texto = request.POST.get("texto")
             Comentario.objects.create(persona=persona,noticia=post,texto=texto)
-            return render(request, self.template_name,{
-                'comments': post.comentario_set.all()
-            })
+            return redirect("posts:adminNoticiaDetail", pk=post.id)
         elif "delete_notice" in button:
             post = self.get_object()
             post.delete()
