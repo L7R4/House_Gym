@@ -57,7 +57,7 @@
     justify-content: left;
     align-items: center;
     position: absolute;
-    z-index: 5;
+    z-index: 99;
     opacity: 0;
     transition: all .3s ease;
     pointer-events: none;
@@ -92,7 +92,7 @@
 
 .perfil_bg {
     transition: all 0.5s;
-    /* width: 95%; */
+    width: 100%;
     /* height: 93%; */
     background: #F9F9FF;
     border-radius: 0px 50px 50px 0px;

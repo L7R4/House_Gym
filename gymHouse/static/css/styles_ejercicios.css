@@ -62,3 +62,9 @@ body {
     color:white;
     margin: 0 auto 0.5rem;
 }
+.screen-ejercicio  >.ejercicio > .ejercicio-pasos > p.text_pasos
+{
+    font-size: 1.4rem;
+    text-align: center;
+    color:black;
+}

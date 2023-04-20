@@ -41,7 +41,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0 0 0 7rem;
-    height: 100vh;
+    /* height: 100vh; */
     flex-flow: column;
 }
 .historial{
@@ -144,6 +144,7 @@ body {
     width: 47%;
     min-width: 32rem;
     border-radius: 24px;
+    max-height: 380px;
     overflow: auto;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.71);
 }
@@ -153,6 +154,7 @@ body {
     min-width: 32rem;
     border-radius: 24px;
     overflow: auto;
+    max-height: 384px;
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.71);
 }
 .mujeres h1{
@@ -232,7 +234,7 @@ body {
     }
     .pickdate{
         width: 90%;
-        height: 20%;
+        /* height: 20%; */
     }
     .historial button{
         background: none;

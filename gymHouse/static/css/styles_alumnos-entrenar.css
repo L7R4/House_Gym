@@ -145,7 +145,7 @@ div.plegable.desplegado > .ejercicio{
     width: auto;
     margin: auto;
     padding: 1.6rem 2rem;
-    background: #D6E1FF;
+    /* background: #D6E1FF; */
 }
 .screen-ejercicio > .ejercicio > .ejercicio-pasos p{
     font-family:"raleway medium";

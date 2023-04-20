@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <title>Gym House</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
+    <title>House Gym</title>
 </head>
 <body>
 
     <!-- Landing page -->
-    <input type="checkbox" class="checkbox" id="menu-toogle"/>
     <label for="menu-toogle" class="menu-toogle">
         <img class="icon-menu" src="{% static '/images/menu.png' %}">
         <img class="icon-cruz"src="{% static '/images/cross.png' %}">
@@ -24,9 +24,9 @@
                 <li>
                     <a href="#sobrenosotros">Sobre Nosotros</a>
                 </li>
-                <li>
+                {% comment %} <li>
                     <a href="#noticias">Noticias</a>
-                </li>
+                </li> {% endcomment %}
                 <li>
                     <a href="#horarios">Horarios</a> 
                 </li>
@@ -127,8 +127,8 @@
                 Nuestra visión es la de ser líderes promotores de la vida saludable y en familia en la zona norte de Resistencia; seguir creciendo en el rubro y afianzarnos como empresa local.
             </p>
             <div>
-                <img src="{% static 'images/houseGym/moi.png' %}">
-                <img src="{% static 'images/houseGym/fede.png' %}">
+                <img src="{% static 'images/moi.png' %}">
+                <img src="{% static 'images/fede.png' %}">
             </div>
         </div>
 
@@ -389,6 +389,7 @@
         }
     </script>
     <script src="{% static 'js/modal_login.js' %}"></script>
+    <script src="{% static 'js/menuIndex.js' %}"></script>
     <script src="{% static 'js/displaySobreNosotros.js' %}"></script>
 </body>
 </html>

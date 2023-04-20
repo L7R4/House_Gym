@@ -464,6 +464,18 @@ ul{
     justify-content: center;
     margin-top: auto;
 }
+.disminuir,.aumentar
+{
+    background-color: white;
+    border-radius: 5px;
+    border-color: transparent;
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
+    color: rgb(0, 0, 0);
+}
+.custom-num > input{
+    
+}
 
 #form_close{
     border-radius: 18px;
@@ -574,7 +586,8 @@ ul{
     outline: none;
     border: none;
     text-align: center;
-
+    font-family: "raleway semibold";
+    font-size: 1.4rem;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

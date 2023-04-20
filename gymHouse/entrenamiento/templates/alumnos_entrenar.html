@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{% static 'css/styles_alumnos-entrenar.css' %}"/>
         
         <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
-        <title>Gym House</title>
+        <title>House Gym</title>
     
     
     </head>
@@ -129,7 +129,9 @@
                             {% endif %}
                             
                             <div class="profile_data--name" id="profile_data--name">
+                                {% if  user.apodo != None%}
                                 <h1>{{user.apodo}}</h1>
+                                {% endif %}
                                 {% comment %} <figure></figure> {% endcomment %}
                                 <h3>{{user.nombre}} {{user.apellido}}</h3>
                                 {% if  user.edad != None%}

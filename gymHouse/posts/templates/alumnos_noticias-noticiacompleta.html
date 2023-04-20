@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/styles_admin_noticias-noticia.css' %}">
 
     <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
-    <title>Gym House</title>
+    <title>House Gym</title>
 </head>
 <body>
     
@@ -125,7 +125,9 @@
                         {% endif %}
                         
                         <div class="profile_data--name" id="profile_data--name">
-                            <h1>{{user.apodo}}</h1>
+                            {% if  user.apodo != None%}
+                                <h1>{{user.apodo}}</h1>
+                            {% endif %}
                             {% comment %} <figure></figure> {% endcomment %}
                             <h3>{{user.nombre}} {{user.apellido}}</h3>
                             {% if  user.edad != None%}
@@ -213,7 +215,11 @@
                         {% for comment in comments %}
                             <div class="coments--user">
                                 <div class="coments--userinfo">
-                                    <img src="/public/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
+                                    {% if comment.persona.foto_de_perfil == "" %}
+                                        <img src="{% static 'images/avatar/9.png' %}" alt="{{comment.persona}}">
+                                    {% else %}
+                                        <img src="/media/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
+                                    {% endif %}
                                     <h5>{{comment.persona}}</h5>
                                 </div>
                                 <p>{{comment}}</p>

@@ -59,7 +59,7 @@ class IndexAlumno(generic.View):
             dias_plan = None
         # print(request.user.rango)
         return render(request, self.template_name, {
-        "posts": Noticia.objects.all().order_by('id')[:3],
+        "posts": Noticia.objects.all().order_by('-id')[:3],
         "plan": plan,
         "dias":dias_plan,
         'encuesta': FormularioIndex.objects.all().last()

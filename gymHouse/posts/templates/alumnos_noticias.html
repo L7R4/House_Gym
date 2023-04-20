@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles_menu.css' %}" /> {% comment %}  MENU {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/styles-admin_navcel.css' %}" />{% comment %}  MENU RESPONSIVE{% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}"> {% comment %}  MODAL PERFIL {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles-alumnos_perfil.css' %}">{% comment %}  MODAL PERFIL {% endcomment %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_alumnos_noticias2.css' %}">
 
@@ -124,7 +124,9 @@
                         {% endif %}
                         
                         <div class="profile_data--name" id="profile_data--name">
-                            <h1>{{user.apodo}}</h1>
+                            {% if  user.apodo != None%}
+                                <h1>{{user.apodo}}</h1>
+                                {% endif %}
                             {% comment %} <figure></figure> {% endcomment %}
                             <h3>{{user.nombre}} {{user.apellido}}</h3>
                             {% if  user.edad != None%}

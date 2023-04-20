@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles_alumnos-turnos.css' %}">
 
     <link rel="shortcut icon" href="{% static 'images/logo.svg' %}">
-    <title>Gym House</title>
+    <title>House Gym</title>
 </head>
 <body>
 
@@ -125,7 +125,9 @@
                         {% endif %}
                         
                         <div class="profile_data--name" id="profile_data--name">
-                            <h1>{{user.apodo}}</h1>
+                            {% if  user.apodo != None%}
+                                <h1>{{user.apodo}}</h1>
+                                {% endif %}
                             {% comment %} <figure></figure> {% endcomment %}
                             <h3>{{user.nombre}} {{user.apellido}}</h3>
                             {% if  user.edad != None%}
@@ -186,7 +188,7 @@
     </section>
 
 
-    <div class="turnos"> 
+    {% comment %} <div class="turnos"> 
         <div class="shifts" id="shifts"><!--este agregué-->
         <div class="shifts_table" id="shifts_table">
             <h1>TURNOS</h1>
@@ -1018,6 +1020,996 @@
             </div>
         </div>
         <div class="fill-mediaquery"></div>
+    </div> {% endcomment %}
+
+    <div class="turnos">
+        <div class="shifts" id="shifts">
+            <div class="shifts_table" id="shifts_table">
+                <h1>TURNOS</h1>
+                
+                <div class="shifts_days--monday" id="shifts_days--monday">
+                    <h3 class="shifts_days" id="shifts_days--l">Lunes</h3>
+                    <div class="shift_info--overflow">
+                        <div class="shift_info--conteiner">
+                            
+                            <div class="shifts_info" id="shifts_info--l14">
+                                <p class="shifts_info--hour">9hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 9 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--l14">
+                                <p class="shifts_info--hour">10hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 10 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+
+
+                            <div class="shifts_info" id="shifts_info--l14">
+                                <p class="shifts_info--hour">14hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 14 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l15">
+                                <p class="shifts_info--hour">15hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 15 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l16">
+                                <p class="shifts_info--hour">16hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 16 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l17">
+                                <p class="shifts_info--hour">17hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 17 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l18">
+                                <p class="shifts_info--hour">18hs</p>
+                                <p class="shifts_info--prof">Prof.Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 18 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l19">
+                                <p class="shifts_info--hour">19hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 19 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l20">
+                                <p class="shifts_info--hour">20hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 20 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l21">
+                                <p class="shifts_info--hour">21hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 21 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--l22">
+                                <p class="shifts_info--hour">22hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "lunes" in alumno.dias and 22 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="shifts_days--tuesday" id="shifts_days--tuesday">
+                    <h3 class="shifts_days" id="shifts_days--m">Martes</h3>
+                    <div class="shift_info--overflow">
+                        <div class="shift_info--conteiner">
+
+                            <div class="shifts_info" id="shifts_info--m14">
+                                <p class="shifts_info--hour">9hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 9 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--m14">
+                                <p class="shifts_info--hour">10hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 10 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            
+                            <div class="shifts_info" id="shifts_info--m14">
+                                <p class="shifts_info--hour">14hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 14 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m15">
+                                <p class="shifts_info--hour">15hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 15 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m16">
+                                <p class="shifts_info--hour">16hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 16 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m17">
+                                <p class="shifts_info--hour">17hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 17 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m18">
+                                <p class="shifts_info--hour">18hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 18 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m19">
+                                <p class="shifts_info--hour">19hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 19 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m20">
+                                <p class="shifts_info--hour">20hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 20 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m21">
+                                <p class="shifts_info--hour">21hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 21 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--m22">
+                                <p class="shifts_info--hour">22hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "martes" in alumno.dias and 22 in alumno.horas%}
+                                            <li>
+                                                <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                {{alumno.persona}}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="shifts_days--wednesday" id="shifts_days--wednesday">
+                    <h3 class="shifts_days" id="shifts_days--mi">Miércoles</h3>
+                    <div class="shift_info--overflow">
+                        <div class="shift_info--conteiner">
+
+                            <div class="shifts_info" id="shifts_info--mi14">
+                                <p class="shifts_info--hour">9hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 9 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--mi14">
+                                <p class="shifts_info--hour">10hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 10 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--mi14">
+                                <p class="shifts_info--hour">14hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 14 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi15">
+                                <p class="shifts_info--hour">15hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 15 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi16">
+                                <p class="shifts_info--hour">16hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 16 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi17">
+                                <p class="shifts_info--hour">17hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 17 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi18">
+                                <p class="shifts_info--hour">18hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 18 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi19">
+                                <p class="shifts_info--hour">19hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 19 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi20">
+                                <p class="shifts_info--hour">20hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 20 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi21">
+                                <p class="shifts_info--hour">21hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 21 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--mi22">
+                                <p class="shifts_info--hour">22hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "miercoles" in alumno.dias and 22 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shifts_days--thursday" id="shifts_days--thursday">
+                    <h3 class="shifts_days" id="shifts_days--j">Jueves</h3>
+                    <div class="shift_info--overflow">
+                        <div class="shift_info--conteiner">
+
+                            <div class="shifts_info" id="shifts_info--j14">
+                                <p class="shifts_info--hour">9hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 9 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--j14">
+                                <p class="shifts_info--hour">10hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 10 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--j14">
+                                <p class="shifts_info--hour">14hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 14 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                    
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j15">
+                                <p class="shifts_info--hour">15hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 15 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j16">
+                                <p class="shifts_info--hour">16hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 16 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j17">
+                                <p class="shifts_info--hour">17hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 17 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j8">
+                                <p class="shifts_info--hour">18hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 18 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j19">
+                                <p class="shifts_info--hour">19hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 19 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                            
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j20">
+                                <p class="shifts_info--hour">20hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 20 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j21">
+                                <p class="shifts_info--hour">21hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 21 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--j22">
+                                <p class="shifts_info--hour">22hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "jueves" in alumno.dias and 22 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shifts_days--friday" id="shifts_days--friday">
+                    <h3 class="shifts_days" id="shifts_days--v">Viernes</h3>
+                    <div class="shift_info--overflow">
+                        <div class="shift_info--conteiner">
+                            <div class="shifts_info" id="shifts_info--v14">
+                                <p class="shifts_info--hour">9hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 9 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="shifts_info" id="shifts_info--v14">
+                                <p class="shifts_info--hour">10hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 10 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            
+                            <div class="shifts_info" id="shifts_info--v14">
+                                <p class="shifts_info--hour">14hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 14 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v15">
+                                <p class="shifts_info--hour">15hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 15 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v16">
+                                <p class="shifts_info--hour">16hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 16 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v17">
+                                <p class="shifts_info--hour">17hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 17 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v18">
+                                <p class="shifts_info--hour">18hs</p>
+                                <p class="shifts_info--prof">Prof. Nelson Miño</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 18 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v19">
+                                <p class="shifts_info--hour">19hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 19 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v20">
+                                <p class="shifts_info--hour">20hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 20 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                                
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v21">
+                                <p class="shifts_info--hour">21hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 21 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                               
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="shifts_info" id="shifts_info--v22">
+                                <p class="shifts_info--hour">22hs</p>
+                                <p class="shifts_info--prof">Prof. Cristian Muñoz</p>
+                                <button class="shifts_info--pupils"><p>Alumnos</p></button>
+                                <ul class="alumnos">
+                                    {% for alumno in alumnos %}
+                                        {% if "viernes" in alumno.dias and 22 in alumno.horas%}
+                                            <li>
+                                                    <img src="{% if alumno.foto_de_perfil %} {{alumno.foto_de_perfil}} {% else %} {% static 'images/avatar/11.png' %} {% endif %}" alt="" width="20px">
+                                                    {{alumno.persona}}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+
+            </div>
+        </div>
+
+        <div class="acomodar"><!--este agregué-->
+
+            <div class="landing-planmensual"> 
+                <div class="planmensual-titulo">
+                    <img src="{% static 'images/lovefitness.png' %}">
+                    <p>Tu plan mensual</p>
+                </div>
+                <div class="planmensual-tuplan">
+                    <div class="titulo">
+                        {% if plan == None %}
+                            <p>Todavia no tiene un turno registrado</p>
+                        {% else %}
+                            <p>{{plan|upper}}</p>
+                        {% endif %} 
+                        
+                    </div>
+                    <div class="diashorario">
+                        {% for x in dias %}
+                            <div>
+                                <p class="dia">{{x.dia|upper|slice:":3"}}</p>
+                                <p class="horario">{{x.hora}}hs</p>
+                            </div>
+                        {% endfor %}
+                    </div>            
+                </div>
+                <div class="plan"><p>¿Querés cambiar tu plan?</p></div>
+                <a href="https://wa.me/543624594665">Cambiar plan</a>
+            </div>
+            <div class="window_turno_alumnos_wrapper" id="window_turno_alumnos_wrapper">
+                <div class="window_turno_alumnos" id="window_turno_alumnos">
+                    <button id="window_turno_alumnos_close">X</button>
+                    <h1>Alumnos que van al mismo horario que tu!</h1>
+    
+                    <div class="alumnos_wrapper">
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+        <div class="fill-mediaquery"></div>
+
     </div>
 
     <script src="{% static 'js/model.js' %}"></script>

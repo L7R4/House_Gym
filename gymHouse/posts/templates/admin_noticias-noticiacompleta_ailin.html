@@ -242,7 +242,11 @@
 
                             <div class="coments--user">
                                 <div class="coments--userinfo">
-                                    <img src="/media/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
+                                    {% if comment.persona.foto_de_perfil == "" %}
+                                        <img src="{% static 'images/avatar/9.png' %}" alt="{{comment.persona}}">
+                                    {% else %}
+                                        <img src="/media/{{comment.persona.foto_de_perfil}}" alt="{{comment.persona}}">
+                                    {% endif %}
                                     <h5>{{comment.persona}}</h5>
                                 </div>
                                 <p>{{comment}}</p>
